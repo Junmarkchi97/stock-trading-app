@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: stock_trading_app_production
-  username: stock_trading_app
-  password: <%= ENV["STOCK_TRADING_APP_DATABASE_PASSWORD"] %>
+  username: junmarkchi
+  password: junmarkchi
