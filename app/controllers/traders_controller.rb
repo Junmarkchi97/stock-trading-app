@@ -71,7 +71,7 @@ class TradersController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def trader_params
-        params.require(:trader).permit(:email, :password, :role, :admin)
+        params.require(:trader).permit(:email, :password, :role, :admin, :username, :age)
       end
   end
   
