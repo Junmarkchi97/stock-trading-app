@@ -1,5 +1,3 @@
-<h1>Pages#home</h1>
-
 <% if current_trader %>
     <p> Hello <%= current_trader.email%>!</p>
     <p>You are logged in.</p>
@@ -11,15 +9,10 @@
     <% if current_trader.admin %>
         <p><strong>You are an admin.</strong></p>
         <p>There are <%= Trader.count %> in the system.</p>
-
         <p><%= link_to "All Users", traders_path %></p>
-
     <%end%>
-<% else %>
-    <p>You are not logged in</p>
+    <% else %>
     <%= link_to "Sign Up", new_trader_registration_path %>
-    <br/>
+    <br>
     <%= link_to "Login", new_trader_session_path %>
 <% end %>
-
-<p>Find me in app/views/pages/home.html.erb</p>
