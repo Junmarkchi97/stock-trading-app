@@ -1,0 +1,25 @@
+<h1>Pages#home</h1>
+
+<% if current_trader %>
+    <p> Hello <%= current_trader.email%>!</p>
+    <p>You are logged in.</p>
+    <% if current_trader.trader? %>
+        <p>You are a <%= current_trader.role %>.</p>
+    <% end %>
+    <%= link_to "Edit Profile", edit_trader_registration_path %> | 
+    <%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
+    <% if current_trader.admin?%>
+        <p><strong>You are an <%= current_trader.role %>.</strong></p>
+        <p>There are <%= Trader.count %> in the system.</p>
+
+        <p><%= link_to "All Users", traders_path %></p>
+
+    <%end%>
+<% else %>
+    <p>You are not logged in</p>
+    <%= link_to "Sign Up", new_trader_registration_path %>
+    <br/>
+    <%= link_to "Login", new_trader_session_path %>
+<% end %>
+
+<p>Find me in app/views/pages/home.html.erb</p>
