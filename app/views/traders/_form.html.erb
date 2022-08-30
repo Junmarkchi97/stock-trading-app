@@ -17,6 +17,16 @@
   </div>
 
   <div>
+    <%= form.label :username, style: "display: block" %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div>
+    <%= form.label :age, style: "display: block" %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div>
     <div class="field">
     <%= form.label :admin %><br />
     <%= form.label :admin, "Yes", value: "true"  %>

@@ -1,5 +1,5 @@
 <% if current_trader.admin %>
-    <p>Hello <%= current_trader.email %>! You are an admin.
+    <p>Hello <%= current_trader.username %>! You are an admin.
 
     <% @traders.each do |trader| %>
     <ul>
@@ -10,8 +10,8 @@
       </p>
 
       <p>
-        <strong>Email:</strong>
-        <%= trader.email %>
+        <strong>Username:</strong>
+        <%= trader.username %>
       </p>
       </li>
       <%= link_to "Show trader", trader %>
