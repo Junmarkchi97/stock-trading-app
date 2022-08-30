@@ -1,0 +1,22 @@
+<% if current_trader.admin?%>
+    <p>Hello <%= current_trader.email %>! You are an <%= current_trader.role %>.
+
+    <% @traders.each do |trader| %>
+    <ul>
+     <li>
+      <p>
+        <strong>ID:</strong>
+        <%= trader.id %>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <%= trader.email %>
+      </p>
+      </li>
+    </ul>
+    <% end %>
+
+<% else %>
+    <p>Hello <%= current_trader.email %>! You are a <%= current_trader.role %>. You cannot access this page.
+<%end%>
