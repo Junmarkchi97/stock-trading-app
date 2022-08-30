@@ -1,5 +1,5 @@
-<% if current_trader.admin?%>
-    <p>Hello <%= current_trader.email %>! You are an <%= current_trader.role %>.
+<% if current_trader.admin %>
+    <p>Hello <%= current_trader.email %>! You are an admin.
 
     <% @traders.each do |trader| %>
     <ul>
@@ -14,9 +14,10 @@
         <%= trader.email %>
       </p>
       </li>
+      <%= link_to "Show trader", trader %>
     </ul>
     <% end %>
 
 <% else %>
-    <p>Hello <%= current_trader.email %>! You are a <%= current_trader.role %>. You cannot access this page.
+    <p>Hello <%= current_trader.email %>! You are a basic trader. You cannot access this page.
 <%end%>

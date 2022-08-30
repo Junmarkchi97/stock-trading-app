@@ -18,6 +18,7 @@ class TradersController < ApplicationController
   
     # GET /traders/1/edit
     def edit
+      @boolean = false
     end
   
     # POST /traders or /traders.json
