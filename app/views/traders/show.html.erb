@@ -1,0 +1,13 @@
+    <ul>
+      <li><strong>Email: </strong><%= @trader.email%></li>
+      <p><strong>ID: </strong><%= @trader.id%></p>
+      <p><strong>Admin: </strong><%= @trader.admin%></p>
+    </ul>
+
+<div>
+  <%= link_to "Edit this trader", edit_trader_path(@trader) %> |
+  <%= link_to "Back to traders", traders_path %> | 
+
+
+  <%= button_to "Destroy this trader", @trader, method: :delete %>
+</div>
