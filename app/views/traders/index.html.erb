@@ -1,4 +1,4 @@
-<% if current_trader.admin?%>
+<% if current_trader.admin %>
     <p>Hello <%= current_trader.email %>! You are an admin.
 
     <% @traders.each do |trader| %>
