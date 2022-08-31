@@ -1,5 +1,3 @@
-<%= @microsoft %>
-<%= @top_ten %>
 <% if current_trader %>
     <p> Hello <%= current_trader.first_name%> <%= current_trader.last_name%>!</p>
     <p>You are logged in.</p>
@@ -14,7 +12,5 @@
         <p><%= link_to "All Users", traders_path %></p>
     <%end%>
     <% else %>
-    <%= link_to "Sign Up", new_trader_registration_path %>
-    <br>
-    <%= link_to "Login", new_trader_session_path %>
+        <%= render 'nav' %>
 <% end %>

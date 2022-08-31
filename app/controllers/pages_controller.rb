@@ -4,6 +4,6 @@ class PagesController < ApplicationController
     @microsoft = client.quote('MSFT').latest_price
 
     @top_ten = client.stock_market_list(:mostactive)
-    debugger
+    # debugger
   end
 end

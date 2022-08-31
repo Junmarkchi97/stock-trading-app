@@ -3,6 +3,10 @@
 @import "account/signup";
 @import "alert/alert";
 
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
 *,
 *::before,
 *::after {
@@ -15,7 +19,8 @@ body {
   height: 100vh;
   width: 100vw;
   font-family: "Inter", "Sans-serif";
-  overflow: hidden;
+  overflow-x: hidden;
+  text-rendering: optimizeSpeed;
 }
 
 .red {
