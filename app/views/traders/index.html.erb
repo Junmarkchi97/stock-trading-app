@@ -1,5 +1,5 @@
 <% if current_trader.admin %>
-    <p>Hello <%= current_trader.username %>! You are an admin.
+    <p>Hello <%= current_trader.first_name %> <%= current_trader.last_name %>! You are an admin.
 
     <% @traders.each do |trader| %>
     <ul>
@@ -10,8 +10,13 @@
       </p>
 
       <p>
-        <strong>Username:</strong>
-        <%= trader.username %>
+        <strong>First Name:</strong>
+        <%= trader.first_name %>
+      </p>
+
+      <p>
+        <strong>Last Name:</strong>
+        <%= trader.last_name %>
       </p>
       </li>
       <%= link_to "Show trader", trader %>
@@ -21,7 +26,6 @@
     <%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
 
 <% else %>
-    <p>Hello <%= current_trader.email %>! You are a basic trader. You cannot access this page.
+    <p>Hello <%= current_trader.first_name %> <%= current_trader.last_name %>! You are a basic trader. You cannot access this page.
     <%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
-
 <%end%>

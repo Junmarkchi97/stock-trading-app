@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
-@import "account/login.scss";
+@import "account/login";
 @import "account/signup";
-@import "alert/alert.scss";
+@import "alert/alert";
 
 *,
 *::before,
@@ -20,4 +20,13 @@ body {
 
 .red {
   color: rgb(252, 98, 98);
+}
+
+.error {
+  color: red;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
 }

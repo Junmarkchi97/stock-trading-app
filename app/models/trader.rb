@@ -10,6 +10,7 @@ class Trader < ApplicationRecord
   end
 
   validates :email, presence: true, uniqueness: true
-  validates :username, presence: true, uniqueness: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :age, presence: true, numericality: { greater_than_or_equal_to: 18 }
 end
