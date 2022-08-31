@@ -17,8 +17,13 @@
   flex-direction: column;
   gap: 2rem;
 
+  img {
+    width: 6rem;
+    // cursor: pointer;
+  }
+
   .form-h1 {
-    color: rgb(23, 82, 23);
+    color: #175217;
     margin-bottom: 0.5rem;
     text-align: center;
   }

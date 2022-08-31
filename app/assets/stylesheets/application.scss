@@ -2,6 +2,7 @@
 @import "account/login";
 @import "account/signup";
 @import "alert/alert";
+@import "homepage/navigation";
 
 html:focus-within {
   scroll-behavior: smooth;
@@ -34,4 +35,9 @@ body {
   flex-direction: column;
   align-items: center;
   font-size: 0.8rem;
+}
+
+.image {
+  height: auto;
+  width: 30%;
 }

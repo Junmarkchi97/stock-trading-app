@@ -1,7 +1,13 @@
-
 <div class="nav">
-  <img src="">
-  <%= link_to "Sign Up", new_trader_registration_path %>
-  <%= link_to "Login", new_trader_session_path %>
+  <div class="nav-logo">
+    <img src="/logo3.png" class="logo">
+    <span>About Us</span>
+    <span>Services</span>
+    <span>Company</span>
+  </div>
+  <div class="auth">
+    <%= link_to "Login", new_trader_session_path, class:"nav-login" %>
+    <%= link_to "Create Account", new_trader_registration_path, class:"nav-signup" %>
+  </div>
 </div>
         
