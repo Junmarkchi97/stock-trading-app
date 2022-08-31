@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
-@import "./account/login.scss";
-@import "./account/signup.scss";
-@import "./alert/alert.scss";
+@import "account/login.scss";
+@import "account/signup";
+@import "alert/alert.scss";
 
 *,
 *::before,
