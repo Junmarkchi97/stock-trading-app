@@ -1,5 +1,5 @@
 <% if current_trader %>
-    <p> Hello <%= current_trader.email%>!</p>
+    <p> Hello <%= current_trader.first_name%> <%= current_trader.last_name%>!</p>
     <p>You are logged in.</p>
     <% if !current_trader.admin %>
         <p>You are a trader.</p>
