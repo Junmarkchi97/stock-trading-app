@@ -36,7 +36,7 @@ default: &default
 development:
   <<: *default
   database: stock-trading_postgresql
-  
+
 test:
   <<: *default
   database: stock-trading_test

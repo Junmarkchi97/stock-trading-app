@@ -1,18 +1,18 @@
 <div class="signup-wrapper">
   <div class="signup-container">
     <h1 class="form-h1">Create an account</h1>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.label :first_name, class:"form-label" %>
+        <%= f.text_field :first_name, class:"form-input", placeholder: "Enter your first name" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name %>
-    </div>
-
-    <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name %>
-    </div>    
+      <div class="field">
+        <%= f.label :last_name, class:"form-label" %>
+        <%= f.text_field :last_name, class:"form-input", placeholder: "Enter your last name" %>
+      </div>    
       
       <div class="field">
         <%= f.label :email, class:"form-label" %>
@@ -31,13 +31,14 @@
 
       <div class="field">
         <%= f.label :age, class:"form-label" %>
-        <%= f.number_field :age, class:"form-input", placeholder: "18" %>
+        <%= f.number_field :age,value: 18, class:"form-input", placeholder: "18" %>
       </div>  
 
       <div class="actions">
         <%= f.submit "Sign up", data: {turbo: false}, class: "signup-submit" %>
       </div>
+
+      <p class="form-p">Already have an account?  <%= link_to "Sign in", new_session_path(resource_name), class:"form-signin" %></p>
   <% end %>
   </div>
 </div>
-<%= render "devise/shared/links" %>

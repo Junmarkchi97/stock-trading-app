@@ -1,11 +1,11 @@
 <%= form_with(model: trader) do |form| %>
   <% if trader.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(trader.errors.count, "error") %> prohibited this trader from being saved:</h2>
+    <div class="error red">
+      <h2 class="error"><%= pluralize(trader.errors.count, "error") %> prohibited this trader from being saved:</h2>
 
       <ul>
         <% trader.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li><%= error.full_message, class: "error"%></li>
         <% end %>
       </ul>
     </div>

@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
-@import "./account/login.scss";
-@import "./account/signup.scss";
-@import "./alert/alert.scss";
+@import "account/login";
+@import "account/signup";
+@import "alert/alert";
+@import "homepage/navigation";
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
 
 *,
 *::before,
@@ -15,9 +20,24 @@ body {
   height: 100vh;
   width: 100vw;
   font-family: "Inter", "Sans-serif";
-  overflow: hidden;
+  overflow-x: hidden;
+  text-rendering: optimizeSpeed;
 }
 
 .red {
   color: rgb(252, 98, 98);
+}
+
+.error {
+  color: red;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.image {
+  height: auto;
+  width: 30%;
 }

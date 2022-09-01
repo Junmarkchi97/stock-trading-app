@@ -1,0 +1,111 @@
+.nav {
+  border-bottom: 1px solid rgba(151, 151, 151, 0.3);
+  height: 10%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 0rem 10%;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: rgb(73, 73, 73);
+
+    img {
+      margin: 0rem 2rem 0rem 0;
+    }
+
+    span {
+      cursor: pointer;
+      position: relative;
+      padding: 1rem 1rem;
+      transition: 0.5s;
+
+      &:hover {
+        color: #32a032;
+      }
+
+      &::after {
+        content: "";
+        height: 4px;
+        background-color: #216921;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: transform 250ms ease-in;
+        transform: scaleX(0);
+        transform-origin: right;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+
+  .logo {
+    width: 100%;
+    max-width: 5rem;
+    height: auto;
+    cursor: pointer;
+  }
+
+  .auth {
+    margin: 0rem 5%;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    .nav-login {
+      padding: 0.8rem 1rem;
+      text-decoration: none;
+      border-radius: 10px;
+      color: rgb(73, 73, 73);
+      transition: 0.5s;
+      font-weight: 700;
+      font-size: 1.1rem;
+      position: relative;
+
+      &::after {
+        content: "";
+        height: 4px;
+        background-color: #216921;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: transform 250ms ease-in;
+        transform: scaleX(0);
+        transform-origin: right;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      &:hover {
+        color: #32a032;
+      }
+    }
+
+    .nav-signup {
+      background-color: #175217;
+      color: white;
+      padding: 0.8rem 1rem;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.5s;
+
+      &:hover {
+        background-color: #1d631d;
+      }
+    }
+  }
+}

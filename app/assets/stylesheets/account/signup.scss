@@ -15,12 +15,21 @@
     align-items: center;
     flex-direction: column;
     gap: 1rem;
-    // border: 1px solid black;
+    margin: auto;
+
+    .form-p {
+      text-align: center;
+
+      .form-signin {
+        color: rgb(29, 104, 29);
+        text-decoration: none;
+      }
+    }
 
     .form-h1 {
       color: rgb(23, 82, 23);
-      // margin-bottom: 0.5rem;
       text-align: center;
+      margin-bottom: 1rem;
     }
 
     .field {
