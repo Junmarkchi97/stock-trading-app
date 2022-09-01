@@ -11,9 +11,20 @@
         <p>There are <%= Trader.count %> in the system.</p>
         <p><%= link_to "All Users", traders_path %></p>
     <%end%>
-    <% else %>
-        <%= render 'nav' %>
-        <div>
-            <img src="/image.png" class="image">
-        </div>
+    <br />
+<ul>
+    <% @top_ten.each do |one| %>
+          <li>
+          <%= one.symbol%> | 
+          <%= one.company_name%> | 
+          <%= one.primary_exchange%>
+        </li>
+        <br />
+    <%end%>  
+  </ul>
+<% else %>
+    <%= render 'nav' %>
+    <div>
+        <img src="/image.png" class="image">
+    </div>
 <% end %>
