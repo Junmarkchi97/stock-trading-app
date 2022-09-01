@@ -1,6 +1,6 @@
 .nav {
   border-bottom: 1px solid rgba(151, 151, 151, 0.3);
-  height: 10%;
+  min-height: 15%;
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -29,7 +29,7 @@
       }
 
       &::after {
-        content: "";
+        content: "";  
         height: 4px;
         background-color: #216921;
         width: 100%;

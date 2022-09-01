@@ -4,25 +4,27 @@
     <% if !current_trader.admin %>
         <p>You are a trader.</p>
     <% end %>
-    <%= link_to "Edit Profile", edit_trader_registration_path %> | 
-    <%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
-    <% if current_trader.admin %>
-        <p><strong>You are an admin.</strong></p>
-        <p>There are <%= Trader.count %> in the system.</p>
-        <p><%= link_to "All Users", traders_path %></p>
-    <%end%>
+
+<%= link_to "Edit Profile", edit_trader_registration_path %> | 
+<%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
+
+<% if current_trader.admin %>
+    <p><strong>You are an admin.</strong></p>
+    <p>There are <%= Trader.count %> in the system.</p>
+    <p><%= link_to "All Users", traders_path %></p>
+<%end%>
+<%= @microsoft %>
+<ul>
+<%= @top_ten.each do |one| %>
+    <li >
+      <%= one.symbol %> | 
+      <%= one.company_name %> | 
+      <%= one.primary_exchange %> |
+      <%= link_to "View Stock", one %>
+    </li>
     <br />
-  <ul>
-    <% @top_ten.each do |one| %>
-        <li >
-          <%= one.symbol%> | 
-          <%= one.company_name%> | 
-          <%= one.primary_exchange%> |
-          <%= link_to "View Stock", one%>
-        </li>
-        <br />
-    <%end%>  
-  </ul>
+<%end%>  
+</ul>
 <% else %>
     <%= render 'nav' %>
     <div>

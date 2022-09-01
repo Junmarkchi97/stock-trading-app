@@ -9,6 +9,7 @@
   .signup-container {
     min-height: 35vmin;
     min-width: 35vmin;
+    width: 25rem;
     padding: 1rem;
     border-radius: 10px;
     display: flex;
@@ -32,12 +33,17 @@
       margin-bottom: 1rem;
     }
 
+    .first-last {
+      display: flex;
+      gap: 0.5rem;
+    }
+
     .field {
       padding: 0.5rem 0rem;
       display: flex;
       gap: 0.4rem;
       flex-direction: column;
-      width: 20rem;
+      width: auto;
 
       .form-label {
         font-size: 1rem;
@@ -91,7 +97,7 @@
     }
 
     .signup-submit {
-      width: 20rem;
+      width: 100%;
       border-radius: 7px;
       background-color: rgb(27, 92, 27);
       color: white;
