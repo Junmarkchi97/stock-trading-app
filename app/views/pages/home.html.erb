@@ -12,12 +12,13 @@
         <p><%= link_to "All Users", traders_path %></p>
     <%end%>
     <br />
-<ul>
+  <ul>
     <% @top_ten.each do |one| %>
-          <li>
+        <li >
           <%= one.symbol%> | 
           <%= one.company_name%> | 
-          <%= one.primary_exchange%>
+          <%= one.primary_exchange%> |
+          <%= link_to "View Stock", one%>
         </li>
         <br />
     <%end%>  
