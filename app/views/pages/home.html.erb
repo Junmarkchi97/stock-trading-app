@@ -13,33 +13,22 @@
     <p>There are <%= Trader.count %> in the system.</p>
     <p><%= link_to "All Users", traders_path %></p>
 <%end%>
-<%= @microsoft %>
+
 <ul>
-<%= @top_ten.each do |one| %>
-    <li >
-      <%= one.symbol %> | 
-      <%= one.company_name %> | 
-      <%= one.primary_exchange %> |
-      <%= link_to "View Stock", one %>
+  <% @top_ten.each do |company| %>
+    <li>
+      <%= company.symbol %> | 
+      <%= company.company_name %> |
+      open: <%= company.open%> |
+      close: <%= company.close%> |
+      latest price: <%= company.latest_price%> | 
+      latest time: <%= company.latest_time%> | 
+      change: <%= company.change%>
+      <%= %>
     </li>
-    <br />
-<<<<<<< HEAD
-  <ul>
-    <% @top_ten.each do |one| %>
-        <li >
-          <%= one.symbol%> | 
-          <%= one.company_name%> | 
-          <%= one.primary_exchange%> |
-          <%= link_to "Buy or Sell", '//www.google.com'%>
-        </li>
-        <br />
-    <%end%>  
-  </ul>
-  <%= @symbols %>
-=======
-<%end%>  
+  <%end%>
 </ul>
->>>>>>> a0f635598c72ceae304ab8825a0667c38ed6ba2d
+
 <% else %>
     <%= render 'nav' %>
     <div>
