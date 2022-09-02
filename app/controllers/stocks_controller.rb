@@ -8,6 +8,8 @@ class StocksController < ApplicationController
 
   # GET /stocks/1 or /stocks/1.json
   def show
+    @client = Iex.client
+    @company_stock = @client.quote(@stock.code)
   end
 
   # GET /stocks/new

@@ -14,20 +14,26 @@
     <p><%= link_to "All Users", traders_path %></p>
 <%end%>
 
+<%= search_form_for(@query, url: search_path, method: :get) do |f| %>
+    <%= f.search_field :code_or_name_i_cont_any, placeholder: "Search..." %>
+    <%= f.submit "Search!" %>
+<% end %>
+<br />
 <ul>
   <% @top_ten.each do |company| %>
     <li>
-      <%= company.symbol %> | 
-      <%= company.company_name %> |
-      open: <%= company.open%> |
-      close: <%= company.close%> |
-      latest price: <%= company.latest_price%> | 
-      latest time: <%= company.latest_time%> | 
-      change: <%= company.change%>
-      <%= %>
+      <p>Company Code: <strong><%= company.symbol %></strong><p>
+      <p>Company Name: <strong><%= company.company_name %></strong><p>
+      <p>Latest Price: <strong><%= company.latest_price%></strong><p>
+      <p>Latest Time: <strong><%= company.latest_time%></strong><p>
+      <p>Change: <strong><%= company.change%></strong><p>
+      <br />
     </li>
   <%end%>
 </ul>
+
+<%= link_to "See all stocks", stocks_path %>
+<%= link_to "Search", search_path%>
 
 <% else %>
     <%= render 'nav' %>
