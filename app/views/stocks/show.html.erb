@@ -1,10 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<%= @stock.code%>
-<%= @stock.name%>
+<p><strong>Company Name:</strong> <%= @stock.name%></p>
+<p><strong>Company Code:</strong> <%= @stock.code%></p>
+<p><strong>Latest Price:</strong> <%= @company_stock.latest_price%></p>
+<p><strong>Latest Time:</strong> <%= @company_stock.latest_time%></p>
+<p><strong>Change:</strong> <%= @company_stock.change%></p>
+
 <%= render @stock %>
 
 <div>
-  <%= link_to "Edit this stock", edit_stock_path(@stock) %> |
-  <%= link_to "Back to stocks", stocks_path %>
+  <%# <%= link_to "Edit this stock", edit_stock_path(@stock) %>
+  <%= link_to "To all stocks", stocks_path %> | 
+  <%= link_to "Back to Home", root_path %>
 </div>
