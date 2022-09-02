@@ -23,8 +23,23 @@
       <%= link_to "View Stock", one %>
     </li>
     <br />
+<<<<<<< HEAD
+  <ul>
+    <% @top_ten.each do |one| %>
+        <li >
+          <%= one.symbol%> | 
+          <%= one.company_name%> | 
+          <%= one.primary_exchange%> |
+          <%= link_to "Buy or Sell", '//www.google.com'%>
+        </li>
+        <br />
+    <%end%>  
+  </ul>
+  <%= @symbols %>
+=======
 <%end%>  
 </ul>
+>>>>>>> a0f635598c72ceae304ab8825a0667c38ed6ba2d
 <% else %>
     <%= render 'nav' %>
     <div>

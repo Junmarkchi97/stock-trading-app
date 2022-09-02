@@ -4,6 +4,8 @@
 
 <div id="stocks">
   <% @stocks.each do |stock| %>
+    <%= stock.code%>
+    <%= stock.name%>
     <%= render stock %>
     <p>
       <%= link_to "Show this stock", stock %>
