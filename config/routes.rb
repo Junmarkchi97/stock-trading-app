@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :stocks
+  
   root 'pages#home'
+
+  resources :stocks
   devise_for :traders
   resources :traders
   devise_for :users

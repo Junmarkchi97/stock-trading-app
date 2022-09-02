@@ -18,11 +18,12 @@
           <%= one.symbol%> | 
           <%= one.company_name%> | 
           <%= one.primary_exchange%> |
-          <%= link_to "View Stock", one%>
+          <%= link_to "Buy or Sell", '//www.google.com'%>
         </li>
         <br />
     <%end%>  
   </ul>
+  <%= @symbols %>
 <% else %>
     <%= render 'nav' %>
     <div>
