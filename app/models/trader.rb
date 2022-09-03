@@ -1,8 +1,10 @@
 class Trader < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_and_belongs_to_many :stocks, join_table: 'stocks_traders'
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, 
+         :confirmable
   enum role: [:trader, :admin]
   after_initialize :set_default_role, :if => :new_record?
   def set_default_role

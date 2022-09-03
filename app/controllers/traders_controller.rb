@@ -18,7 +18,7 @@ class TradersController < ApplicationController
   
     # GET /traders/1/edit
     def edit
-      @boolean = false
+      
     end
   
     # POST /traders or /traders.json
@@ -27,7 +27,10 @@ class TradersController < ApplicationController
   
       respond_to do |format|
         if @trader.save
-          format.html { redirect_to trader_url(@trader), notice: "Trader was successfully created." }
+          
+          RegistrationConfirmationMailer.with(trader: @trader).confirmation_email.deliver_later
+          
+          format.html { redirect_to root_path, notice: "Trader was successfully created." }
           format.json { render :show, status: :created, location: @trader }
         else
           format.html { render :new, status: :unprocessable_entity }

@@ -1,0 +1,10 @@
+<ul>
+    <% @owned_stocks.each do |stock|%>
+        <li>
+            <p><%= stock[:trader_id]%></p>
+            <p><%= stock[:name]%></p>
+            <p><%= stock[:code]%></p>
+            <p><%= stock[:volume]%></p>
+        </li>
+    <%end%>
+</ul>

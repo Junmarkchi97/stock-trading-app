@@ -1,0 +1,2 @@
+class StocksTrader < ApplicationRecord
+end

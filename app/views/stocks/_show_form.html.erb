@@ -1,0 +1,21 @@
+<%= form_with(model: stocks_trader, local: true) do |form| %>
+
+  <div>
+    <%= form.label :trader_id, style: "display: block" %>
+    <%= form.number_field :trader_id %>
+  </div>
+
+  <div>
+    <%= form.label :stock_id, style: "display: block" %>
+    <%= form.number_field :stock_id %>
+  </div>
+
+  <div>
+    <%= form.label :volume, style: "display: block" %>
+    <%= form.number_field :volume %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
