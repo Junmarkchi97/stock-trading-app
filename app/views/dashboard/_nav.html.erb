@@ -1,0 +1,9 @@
+<div class="dashboard-nav">
+  <div class="nav-logo">
+    <img src="/logo3.png" class="logo">
+    <div class="option"><i class="fa-solid fa-house"></i> Dashboard</div>
+    <div class="option"><i class="fa-solid fa-bag-shopping"></i> <%= link_to "Buy Stocks", stocks_path, class:"stocks" %></div>
+    <div class="option"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transactions</div>
+  </div>
+  <div class="nav-logout"><i class="fa-solid fa-right-from-bracket"></i> <%= link_to "Log Out", destroy_trader_session_path, 'data-turbo-method': :delete , class:"logout" %></div>
+</div>

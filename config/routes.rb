@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'search', to: 'search#index' 
   
-  root 'pages#home'
+  root 'dashboard#index'
 
   resources :stocks
   devise_for :traders

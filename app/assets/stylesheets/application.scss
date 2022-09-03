@@ -2,7 +2,9 @@
 @import "account/login";
 @import "account/signup";
 @import "alert/alert";
-@import "homepage/navigation";
+@import "homepage/homepage";
+@import "dashboard/dashboard";
+@import "spinner/spinner";
 
 html:focus-within {
   scroll-behavior: smooth;

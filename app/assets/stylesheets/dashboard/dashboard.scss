@@ -1,0 +1,106 @@
+.dashboard {
+  display: flex;
+  flex-direction: row;
+
+  .dash-home {
+    display: flex;
+  }
+
+  .dashboard-nav {
+    width: auto;
+    max-width: 15%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 10vmin;
+    align-items: center;
+    font-weight: 600;
+    height: 100vh;
+    gap: 1rem;
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      .option {
+        transition: 0.2s;
+        cursor: pointer;
+        padding: 1rem;
+
+        .stocks {
+          padding: auto;
+        }
+
+        &:hover {
+          background-color: rgb(235, 235, 235);
+        }
+      }
+
+      .logo {
+        height: auto;
+        width: 10rem;
+      }
+    }
+
+    .nav-logout {
+      margin: 1rem;
+
+      .logout {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+
+  .company-details {
+    padding: 1rem;
+    margin: 0.5rem 2rem;
+    width: auto;
+    height: auto;
+    min-width: 10rem;
+    max-width: 30rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 0px rgb(175, 174, 174);
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: rgb(221, 221, 221);
+    }
+
+    .green {
+      color: rgba(0, 128, 0, 0.8);
+    }
+
+    .red {
+      color: rgba(255, 0, 0, 0.8);
+    }
+
+    .company-name {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      span {
+        font-weight: 600;
+        color: rgb(65, 65, 65);
+      }
+
+      strong {
+        color: rgb(160, 160, 160);
+      }
+    }
+
+    .company-price {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+  }
+}

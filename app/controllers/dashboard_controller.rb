@@ -1,7 +1,7 @@
-class PagesController < ApplicationController
-  def home
+class DashboardController < ApplicationController
+  def index
     client = Iex.client
-    @microsoft = client.quote('MSFT').latest_price
+    @microsoft = client.quote('MSFT')
     
     @top_ten = client.stock_market_list(:mostactive)
     
