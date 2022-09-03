@@ -10,23 +10,25 @@ class StocksController < ApplicationController
   def show
     @client = Iex.client
     @company_stock = @client.quote(@stock.code)
+    @stocks_trader = StocksTrader.new
   end
 
   # GET /stocks/new
   def new
-    @stock = Stock.new
+    @stocks_trader = StocksTrader.new
   end
 
   # GET /stocks/1/edit
   def edit
+  
   end
 
   # POST /stocks or /stocks.json
   def create
-    @stock = Stock.new(stock_params)
+    @stocks_trader = StocksTrader.new(stocks_trader_params)
 
     respond_to do |format|
-      if @stock.save
+      if @stocks_trader.save
         format.html { redirect_to stock_url(@stock), notice: "Stock was successfully created." }
         format.json { render :show, status: :created, location: @stock }
       else
@@ -39,7 +41,7 @@ class StocksController < ApplicationController
   # PATCH/PUT /stocks/1 or /stocks/1.json
   def update
     respond_to do |format|
-      if @stock.update(stock_params)
+      if @stocks_trader.update(stocks_trader_params)
         format.html { redirect_to stock_url(@stock), notice: "Stock was successfully updated." }
         format.json { render :show, status: :ok, location: @stock }
       else
@@ -68,5 +70,9 @@ class StocksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def stock_params
       params.fetch(:stock, {})
+    end
+
+    def stocks_trader_params
+      params.fetch(:stocks_trader, {})
     end
 end
