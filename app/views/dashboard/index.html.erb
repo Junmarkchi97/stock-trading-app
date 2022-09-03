@@ -1,0 +1,47 @@
+<div class="dashboard">
+  <% if current_trader %>
+  <%= render 'dashboard/nav' %>
+  <div class="dash-home">
+    <p> Hello <%= current_trader.first_name%> <%= current_trader.last_name%>!</p>
+    <p>You are logged in.</p>
+    <% if !current_trader.admin %>
+        <p>You are a trader.</p>
+    <% else %>
+        <p><strong>You are an admin.</strong></p>
+        <p>There are <%= Trader.count %> in the system.</p>
+        <p><%= link_to "All Users", traders_path %></p>
+    <%end%>
+
+    <%= search_form_for(@query, url: search_path, method: :get) do |f| %>
+        <%= f.search_field :code_or_name_i_cont_any, placeholder: "Search..." %>
+        <%= f.submit "Search!" %>
+    <% end %>
+    <br />
+    <ul>
+      <% @top_ten.each do |company| %>
+        <div class="company-details">
+          <div class="company-name">
+            <span><%= company.company_name %></span>
+            <strong><%= company.symbol %></strong>
+          </div>
+          <div class="company-price">
+            <strong>$<%= company.latest_price %></strong>
+            <% if company.change > 0 %>
+              <strong class="green"><i class="fa-solid fa-arrow-trend-up"></i> <%= company.change %>%</strong>
+            <% else %>
+              <strong class="red"><i class="fa-solid fa-arrow-trend-down"></i> <%= company.change %>%</strong>
+            <% end %>
+          </div>
+        </div>
+      <%end%>
+    </ul>
+
+    <%= link_to "Search", search_path %>
+  </div>
+</div>
+<% else %>
+    <%= render 'homepage/index' %>
+<% end %>
+
+<%# <%= link_to "Edit Profile", edit_trader_registration_path %>
+    <%# <%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
