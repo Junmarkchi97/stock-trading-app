@@ -1,6 +1,6 @@
-class PagesController < ApplicationController
+class DashboardController < ApplicationController
   before_action :set_client
-  def home
+  def index
     
     @microsoft = @client.quote('MSFT').latest_price
     
