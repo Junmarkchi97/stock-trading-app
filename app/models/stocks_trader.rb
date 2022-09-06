@@ -1,2 +1,3 @@
 class StocksTrader < ApplicationRecord
+
 end

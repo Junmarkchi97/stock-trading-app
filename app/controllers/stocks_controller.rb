@@ -9,8 +9,24 @@ class StocksController < ApplicationController
   # GET /stocks/1 or /stocks/1.json
   def show
     @client = Iex.client
+    @test = Stock.find(params[:id])
+    @test2 = StocksTrader.find_by(trader_id: current_trader.id)
     @company_stock = @client.quote(@stock.code)
-    @stocks_trader = StocksTrader.new
+    # @stocks_trader = StocksTrader.new(trader_id: current_trader.id, stock_id: @test.id)
+    @cash = current_trader.cash
+    @stocks_trader = StocksTrader.find_or_create_by(trader_id: current_trader.id, stock_id: @test.id)
+    
+    # @stocks_trader = StocksTrader.find_or_create_by(params[:id])
+    # @stocks_trader = StocksTrader.new
+
+    # respond_to do |format|
+    #   if @stocks_trader.save
+    #     format.html { redirect_to portfolio_path, notice: "Stock was successfully created." }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @stock.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # GET /stocks/new
@@ -65,6 +81,7 @@ class StocksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_stock
       @stock = Stock.find(params[:id])
+      
     end
 
     # Only allow a list of trusted parameters through.

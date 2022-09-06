@@ -9,6 +9,14 @@
 
 <%= render @stock %>
 
+<br />
+<p><strong>Cash: </strong><%= @cash %></p>
+<p><strong>Owned: </strong><%= @stocks_trader.volume%></p>
+<p><strong>Trader: </strong><%= current_trader.id%></p>
+<p><strong>Stock: </strong><%= @stock.id%></p>
+<%# <%= render "show_form", stocks_trader: @stocks_trader %> %>
+<%= link_to "Buy", stock_buy_path(@stock)%>
+
 <div>
   <%# <%= link_to "Edit this stock", edit_stock_path(@stock) %>
   <%= link_to "To all stocks", stocks_path %> | 

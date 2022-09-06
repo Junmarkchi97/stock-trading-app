@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  resources :transactions
+  
   get 'search', to: 'search#index' 
+  get 'portfolio', to: 'dashboard#portfolio'
+ 
 # <<<<<<< HEAD
 #   get 'portfolio', to: 'pages#portfolio'
  
@@ -9,9 +13,12 @@ Rails.application.routes.draw do
   
   root 'dashboard#index'
 
-
-  # resources :stocks_traders
-  resources :stocks
+  
+  resources :stocks_traders
+  resources :stocks do
+    get 'buy', to: 'transactions#new'
+    post 'buy', to: 'transaction#new'
+  end
   devise_for :traders
   resources :traders 
   devise_for :users

@@ -38,7 +38,17 @@
     <%= form.radio_button :admin, true, checked: trader.admin %>
     <%= form.label :admin, "No", value: "false" %>
     <%= form.radio_button :admin, false, checked: !trader.admin %>
+    </div>
   </div>
+
+  <div>
+    <div class="field">
+    <%= form.label :approved_boolean %><br />
+    <%= form.label :approved_boolean, "Yes", value: "true"  %>
+    <%= form.radio_button :approved_boolean, true, checked: trader.approved_boolean %>
+    <%= form.label :approved_boolean, "No", value: "false" %>
+    <%= form.radio_button :approved_boolean, false, checked: !trader.approved_boolean %>
+    </div>
   </div>
 
   <div>

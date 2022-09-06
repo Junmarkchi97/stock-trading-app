@@ -43,6 +43,11 @@ class TradersController < ApplicationController
     def update
       respond_to do |format|
         if @trader.update(trader_params)
+
+          if @trader.approved_boolean
+            ApprovalMailer.with(trader: @trader).trader_approved.deliver_later
+          end
+
           format.html { redirect_to trader_url(@trader), notice: "Trader was successfully updated." }
           format.json { render :show, status: :ok, location: @trader }
         else
@@ -74,7 +79,7 @@ class TradersController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def trader_params
-        params.require(:trader).permit(:email, :password, :role, :admin, :first_name, :last_name, :age)
+        params.require(:trader).permit(:email, :password, :role, :admin, :first_name, :last_name, :age, :approved_boolean)
       end
   end
   

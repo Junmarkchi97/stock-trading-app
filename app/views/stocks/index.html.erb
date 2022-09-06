@@ -2,6 +2,7 @@
 
 <h1>Stocks</h1>
 
+<% if current_trader.approved_boolean %>
 <div id="stocks">
   <% @stocks.each do |stock| %>
     <%= stock.code%>
@@ -12,5 +13,8 @@
     </p>
   <% end %>
 </div>
+<%else%>
+  <p>You are not approved to trade.</p>
+<%end%>
 
-<%= link_to "New stock", new_stock_path %>
+<%# <%= link_to "New stock", new_stock_path %> %>
