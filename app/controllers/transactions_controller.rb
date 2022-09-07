@@ -1,12 +1,12 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ show edit update destroy ]
-  before_action :get_stock
+  # before_action :get_stock
   # , except: [:index, :show]
 
   # GET /transactions or /transactions.json
   def index
-    # @transactions = Transaction.all
-    @transactions = @stock.transactions
+    @transactions = Transaction.all
+    # @transactions = @stock.transactions
   end
 
   # GET /transactions/1 or /transactions/1.json
@@ -16,8 +16,8 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/new
   def new
-    # @transaction = Transaction.new
-    @transaction = @stock.transactions.build
+    @transaction = Transaction.new
+    # @transaction = @stock.transactions.build
 
     # @stock = Stock.find_by(id: '1')
     # @transaction = Transaction.new
@@ -29,11 +29,23 @@ class TransactionsController < ApplicationController
 
   # POST /transactions or /transactions.json
   def create
-    # @transaction = Transaction.new(transaction_params)
-    @transaction = @stock.transactions.build(transaction_params)
+    @transaction = Transaction.new(transaction_params)
+    # @transaction = @stock.transactions.build(transaction_params)
+    
+    
 
     respond_to do |format|
       if @transaction.save
+
+        #buy and sell
+        if @transaction_type == 0
+          current_trader.buy_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
+        elsif @transaction_type == 1
+          current_trader.sell_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
+        end
+
+        current_trader.save
+
         format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
         format.json { render :show, status: :created, location: @transaction }
       else
@@ -76,9 +88,9 @@ class TransactionsController < ApplicationController
       @transaction = Transaction.find(params[:id])
     end
 
-    def get_stock
-      @stock = Stock.find(params[:stock_id])
-    end
+    # def get_stock
+    #   @stock = Stock.find(params[:stock_id])
+    # end
 
     # Only allow a list of trusted parameters through.
     def transaction_params
