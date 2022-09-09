@@ -38,10 +38,11 @@ class TransactionsController < ApplicationController
       if @transaction.save
 
         #buy and sell
-        if @transaction_type == 0
+        if @transaction.transaction_type == true
           current_trader.buy_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
-        elsif @transaction_type == 1
+        elsif @transaction.transaction_type == false
           current_trader.sell_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
+          # puts @transaction_type
         end
 
         current_trader.save
