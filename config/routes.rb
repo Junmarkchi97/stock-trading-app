@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  unauthenticated :trader do
+    root to: 'homepage#index', as: :unauthenticated_root
+  end
+
+  authenticated :trader do
+    root to: 'dashboard#index', as: :authenticated_root
+    get '/homepage' => 'homepage#index', as: :homepage
+  end
+
+  devise_scope :trader do
+    root to: 'devise/sessions#new'
+  end
+
   resources :transactions
   get 'buy', to: 'transactions#new'
   post 'buy', to: 'transaction#new'
@@ -12,8 +25,7 @@ Rails.application.routes.draw do
 #   root 'pages#home'
 # =======
   
-  root 'dashboard#index'
-
+  
   
   resources :stocks_traders
   resources :stocks do
@@ -24,6 +36,8 @@ Rails.application.routes.draw do
   devise_for :traders
   resources :traders 
   devise_for :users
+
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

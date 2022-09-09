@@ -23,13 +23,13 @@
   }
 
   .form-h1 {
-    color: #175217;
+    color: $color-primary-dark;
     margin-bottom: 0.5rem;
     text-align: center;
   }
 
   .form-p {
-    color: rgb(29, 104, 29);
+    color: $color-primary;
     text-align: center;
     margin-bottom: 1.5rem;
   }
@@ -43,7 +43,7 @@
 
     .form-label {
       font-size: 1rem;
-      color: rgb(32, 92, 32);
+      color: $color-primary;
     }
 
     .form-input {
@@ -68,7 +68,7 @@
   }
 
   .field-checkbox {
-    color: rgb(23, 82, 23);
+    color: $color-primary;
     display: flex;
     align-items: center;
     gap: 0.3rem;
@@ -81,11 +81,10 @@
 
     .check-label {
       cursor: pointer;
-      user-select: none;
     }
 
     .forgot-submit {
-      color: #2d8b54;
+      color: $color-primary;
       text-decoration: none;
       font-size: 0.9rem;
       text-align: center;
@@ -96,12 +95,10 @@
     min-width: 20rem;
     width: 100%;
     border-radius: 7px;
-    background-color: rgb(27, 92, 27);
-    color: white;
+    background-color: $color-primary-dark;
+    color: $color-info-light;
     cursor: pointer;
     padding: 0.7rem 1rem;
-    border: none;
-    outline: none;
     margin: 2rem 0rem;
     font-size: 1rem;
     transition: 0.2s;
@@ -116,7 +113,6 @@
   }
 
   .signup-login {
-    color: rgb(30, 102, 30);
-    text-decoration: none;
+    color: $color-primary;
   }
 }

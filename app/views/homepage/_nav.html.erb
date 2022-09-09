@@ -6,7 +6,11 @@
     <span>Company</span>
   </div>
   <div class="auth">
-    <%= link_to "Login", new_trader_session_path, class:"nav-login" %>
-    <%= link_to "Create Account", new_trader_registration_path, class:"nav-signup" %>
+    <% if current_trader %>
+      <%= link_to "Back to Dashboard", authenticated_root_path, class:"nav-signup" %>
+    <% else %>
+      <%= link_to "Login", new_trader_session_path, class:"nav-login" %>
+      <%= link_to "Create Account", new_trader_registration_path, class:"nav-signup" %>
+    <% end %>
   </div>
 </div>

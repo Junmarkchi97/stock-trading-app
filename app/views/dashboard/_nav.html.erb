@@ -1,9 +1,31 @@
 <div class="dashboard-nav">
-  <div class="nav-logo">
-    <img src="/logo3.png" class="logo">
-    <div class="option"><i class="fa-solid fa-house"></i> Dashboard</div>
-    <div class="option"><i class="fa-solid fa-bag-shopping"></i> <%= link_to "Buy Stocks", stocks_path, class:"stocks" %></div>
-    <div class="option"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transactions</div>
+  <div class="top">
+    <%= link_to image_tag("/logo3.png"), homepage_path, class:"image" %>
+    <div>
+      <span class="material-symbols-sharp close">close</span>
+    </div>
   </div>
-  <div class="nav-logout"><i class="fa-solid fa-right-from-bracket"></i> <%= link_to "Log Out", destroy_trader_session_path, 'data-turbo-method': :delete , class:"logout" %></div>
+  
+  <div class="sidebar">
+    <a href="/dashboard" class="active">
+      <span class="material-symbols-sharp">dashboard</span> 
+      <h3>Dashboard</h3>
+    </a>
+    <a href="/stocks">
+      <span class="material-symbols-sharp">shopping_cart</span>
+      <h3>Buy Stocks</h3>
+    </a>
+    <a href="/transactions">
+      <span class="material-symbols-sharp">point_of_sale</span>
+      <h3>Transactions</h3>
+    </a>
+    <a href="/settings">
+      <span class="material-symbols-sharp">settings</span>
+      <h3>Settings</h3>
+    </a>
+    <a data-turbo-method="delete" class="logout" href="/traders/sign_out">
+      <span class="material-symbols-sharp">logout</span>
+      <h3>Log Out</h3>
+    </a>
+  </div>
 </div>
