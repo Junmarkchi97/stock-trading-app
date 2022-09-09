@@ -32,8 +32,13 @@
   </div>
 
   <div>
-    <%= form.label :transaction_type, style: "display: block" %>
-    <%= form.number_field :transaction_type %>
+    <div class="field">
+    <%= form.label :transaction_type %><br />
+    <%= form.label :transaction_type, "Buy", value: "true"  %>
+    <%= form.radio_button :transaction_type, true, checked: transaction.transaction_type %>
+    <%= form.label :transaction_type, "Sell", value: "false" %>
+    <%= form.radio_button :transaction_type, false, checked: !transaction.transaction_type %>
+    </div>
   </div>
 
   <div>
