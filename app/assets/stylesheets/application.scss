@@ -7,6 +7,8 @@
 @import "homepage/homepage";
 @import "dashboard/dashboard";
 @import "spinner/spinner";
+@import "stocks/stocks";
+@import "transactions/transactions";
 
 html:focus-within {
   scroll-behavior: smooth;

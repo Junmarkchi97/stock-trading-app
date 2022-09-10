@@ -12,11 +12,7 @@
           <p><%= link_to "All Users", traders_path %></p>
       <%end%>
 
-      <%= search_form_for(@query, url: search_path, method: :get) do |f| %>
-          <%= f.search_field :code_or_name_i_cont_any, placeholder: "Search..." %>
-          <%= f.submit "Search!" %>
-      <% end %>
-      <br />
+      
       <ul class="overflow">
         <% @top_ten.each do |company| %>
           <div class="company-details">
