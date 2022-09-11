@@ -1,58 +1,54 @@
+@import "navigation";
+
 .dashboard {
-  display: flex;
-  flex-direction: row;
+  // display: flex;
+  // flex-direction: row;
+  // height: 100vh;
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  gap: 1.8rem;
+  grid-template-columns: 14rem auto 23rem;
+  height: 100vh;
 
-  .dash-home {
-    display: flex;
-  }
+  // .dash-home {
+  //   display: flex;
+  // }
 
-  .dashboard-nav {
-    width: auto;
-    max-width: 15%;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-width: 10vmin;
-    align-items: center;
-    font-weight: 600;
-    height: 100vh;
-    gap: 1rem;
+  // .nav-logo {
+  //   display: flex;
+  //   align-items: center;
+  //   flex-direction: column;
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+  //   .option {
+  //     transition: 0.2s;
+  //     cursor: pointer;
+  //     padding: 1rem;
 
-      .option {
-        transition: 0.2s;
-        cursor: pointer;
-        padding: 1rem;
+  //     .stocks {
+  //       padding: auto;
+  //     }
 
-        .stocks {
-          padding: auto;
-        }
+  //     &:hover {
+  //       background-color: rgb(235, 235, 235);
+  //     }
+  //   }
 
-        &:hover {
-          background-color: rgb(235, 235, 235);
-        }
-      }
+  //   .logo {
+  //     height: auto;
+  //     width: 10rem;
+  //     padding: 2rem;
+  //   }
+  // }
 
-      .logo {
-        height: auto;
-        width: 10rem;
-      }
-    }
+  // .nav-logout {
+  //   margin: 1rem;
 
-    .nav-logout {
-      margin: 1rem;
-
-      .logout {
-        text-decoration: none;
-        color: black;
-      }
-    }
-  }
+  //   .logout {
+  //     text-decoration: none;
+  //     color: black;
+  //   }
+  // }
 
   .company-details {
     padding: 1rem;

@@ -1,10 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+@import "variables";
 @import "account/login";
 @import "account/signup";
 @import "alert/alert";
 @import "homepage/homepage";
 @import "dashboard/dashboard";
 @import "spinner/spinner";
+@import "stocks/stocks";
+@import "transactions/transactions";
 
 html:focus-within {
   scroll-behavior: smooth;
@@ -16,18 +20,96 @@ html:focus-within {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: 0;
+  // appearance: none;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
 }
 
 body {
   height: 100vh;
   width: 100vw;
-  font-family: "Inter", "Sans-serif";
+  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
   text-rendering: optimizeSpeed;
+  // font-size: 0.88rem;
+  background: $color-backgorund;
+  user-select: none;
 }
 
-.red {
-  color: rgb(252, 98, 98);
+a {
+  color: $color-dark;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 0.87rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+}
+
+h5 {
+  font-size: 0.77rem;
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+.profile-photo {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.text-muted {
+  color: $color-info-dark;
+}
+
+p {
+  color: $color-dark-variant;
+}
+
+b {
+  color: $color-dark;
+}
+
+.primary {
+  color: $color-primary;
+}
+
+.danger {
+  color: $color-danger;
+}
+
+.success {
+  color: $color-success;
+}
+
+.warning {
+  color: $color-warning;
+}
+
+.overflow {
+  overflow-y: scroll;
+  height: 40rem;
 }
 
 .error {

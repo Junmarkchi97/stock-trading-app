@@ -1,20 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<div class="stocks">
+  <%= render 'stocks/nav' %>
+  <div>
+    <p style="color: green"><%= notice %></p>
 
-<h1>Stocks</h1>
-
-<% if current_trader.approved_boolean %>
-<div id="stocks">
-  <% @stocks.each do |stock| %>
-    <%= stock.code%>
-    <%= stock.name%>
-    <%= render stock %>
-    <p>
-      <%= link_to "Show this stock", stock %>
-    </p>
-  <% end %>
+    <h1>Stocks</h1>
+    <% if current_trader.approved_boolean %>
+      <%= search_form_for(@query, url: search_path, method: :get) do |f| %>
+          <%= f.search_field :code_or_name_i_cont_any, placeholder: "Search..." %>
+          <%= f.submit "Search!" %>
+      <% end %>
+      <br />
+      <div id="stocks">
+        <% @stocks.each do |stock| %>
+          <%= stock.code %>
+          <%= stock.name%>
+          <p>
+            <%= link_to "Show this stock", stock %>
+          </p>
+        <% end %>
+      </div>
+    <%else%>
+      <p>You are not approved to trade.</p>
+    <%end%>
+    <%# <%= link_to "New stock", new_stock_path %>
+  </div>
 </div>
-<%else%>
-  <p>You are not approved to trade.</p>
-<%end%>
 
-<%# <%= link_to "New stock", new_stock_path %> %>
