@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ show edit update destroy ]
-  # before_action :get_stock
+  # before_action :get_stock#, except: %i[create]
   # , except: [:index, :show]
 
   # GET /transactions or /transactions.json
@@ -29,14 +29,22 @@ class TransactionsController < ApplicationController
 
   # POST /transactions or /transactions.json
   def create
+    # debugger
     @transaction = Transaction.new(transaction_params)
+    @stocks_trader = StocksTrader.find_by(stock_id: @transaction.stock_id)
+    @sum = @stocks_trader.volume.to_i + @transaction.volume.to_i
     # @transaction = @stock.transactions.build(transaction_params)
-    
-    
+    # debugger
+    # current_trader.stocks << @stock
+    if StocksTrader.exists?(stock_id: @transaction.stock_id)
+      @stocks_trader.update_attribute(:volume, @sum) 
+    else
+      StocksTrader.create(stock_id: @transaction.stock_id, trader_id: @transaction.trader_id, volume: @transaction.volume)
+    end
 
     respond_to do |format|
       if @transaction.save
-
+        # debugger
         #buy and sell
         if @transaction.transaction_type == true
           current_trader.buy_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
@@ -85,13 +93,15 @@ class TransactionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
 
     # def get_stock
-    #   @stock = Stock.find(params[:stock_id])
+      # @stock = Stock.find(params[:stock_id])
     # end
+
+    def set_transaction
+      @transaction = Transaction.find(params[:id])
+      # @transaction = @stock.transactions.find(params[:id])
+    end
 
     # Only allow a list of trusted parameters through.
     def transaction_params

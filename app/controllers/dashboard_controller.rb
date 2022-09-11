@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :set_client
   def index
     
-    @microsoft = @client.quote('MSFT').latest_price
+    # @microsoft = @client.quote('MSFT').latest_price
     
     @top_ten = @client.stock_market_list(:mostactive)
     

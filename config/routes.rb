@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :transactions
-  get 'buy', to: 'transactions#new'
-  post 'buy', to: 'transaction#new'
+  # resources :transactions
+  # get 'buy', to: 'transactions#new'
+  # post 'buy', to: 'transaction#new'
   get 'search', to: 'search#index' 
   get 'portfolio', to: 'dashboard#portfolio'
  
@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   
   resources :stocks_traders
   resources :stocks do
-    # get 'buy', to: 'transactions#new'
-    # post 'buy', to: 'transaction#new'
-    # resources :transactions
+    get 'buy', to: 'transactions#new'
+    post 'buy', to: 'transactions#new'
+    resources :transactions
   end
   devise_for :traders
   resources :traders 

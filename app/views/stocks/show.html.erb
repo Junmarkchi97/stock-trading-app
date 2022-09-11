@@ -15,8 +15,8 @@
 <p><strong>Trader: </strong><%= current_trader.id%></p>
 <p><strong>Stock: </strong><%= @stock.id%></p>
 <%# <%= render "show_form", stocks_trader: @stocks_trader %> %>
-<%# <%= link_to "Buy", stock_buy_path(@stock)%> %>
-<%= link_to "Buy", buy_path%>
+<%= link_to "Buy or Sell", stock_buy_path(@stock) %>
+<%# <%= link_to "Buy or Sell", buy_path%> %>
 
 <div>
   <%# <%= link_to "Edit this stock", edit_stock_path(@stock) %>
