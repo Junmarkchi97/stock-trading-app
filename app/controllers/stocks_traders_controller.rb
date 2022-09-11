@@ -69,7 +69,7 @@ class StocksTradersController < ApplicationController
       # Only allow a list of trusted parameters through.
   
       def stocks_trader_params
-        params.fetch(:stocks_trader, {})
+        params.require(:stocks_trader).permit( :trader_id, :stock_id, :volume )
       end
   end
   
