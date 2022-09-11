@@ -21,7 +21,11 @@
 
   <p>
     <strong>Type:</strong>
-    <%= transaction.transaction_type %>
+    <%if transaction.transaction_type%>
+    Buy
+    <%else%>
+    Sell
+    <%end%>
   </p>
 
 </div>

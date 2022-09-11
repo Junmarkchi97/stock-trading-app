@@ -1,6 +1,7 @@
 <% if current_trader.admin %>
     <p>Hello <%= current_trader.first_name %> <%= current_trader.last_name %>! You are an admin.
 
+<h1>Pending</h1>
     <% @traders.each do |trader| %>
     <ul>
      <li>
@@ -19,9 +20,8 @@
     </ul>
 
     <% end %>
-    <p><%= link_to "New trader", new_trader_session_path %></p>
     <p><%= link_to "Back to Home", root_path %></p>
-    <%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
+    <p><%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %></p>
 
 <% else %>
     <p>Hello <%= current_trader.first_name %> <%= current_trader.last_name %>! You are a basic trader. You cannot access this page.

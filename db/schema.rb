@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_124044) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_11_160934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "trader_id"
+    t.integer "stock_id"
+    t.integer "volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stocks", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -20,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_124044) do
     t.string "code"
     t.string "name"
     t.integer "volume"
+    t.float "price"
     t.index ["code"], name: "index_stocks_on_code"
   end
 
@@ -63,6 +72,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_124044) do
     t.integer "stock_id"
     t.integer "trader_id"
     t.boolean "transaction_type"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

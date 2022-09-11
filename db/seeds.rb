@@ -7,8 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 #Initialize trader and admin users
-Trader.create(first_name: "Junmark", last_name: "Chi", email: "admin@admin.com", password: "password", admin: true, age: 18)
-Trader.create(first_name: "Franco", last_name: "Rivera", email: "trader@trader.com", password: "password", admin: false, age: 18)
+Trader.create(first_name: "Junmark", last_name: "Chi", email: "admin@admin.com", password: "password", admin: true, age: 18, approved_boolean: true)
+Trader.create(first_name: "Franco", last_name: "Rivera", email: "trader@trader.com", password: "password", admin: false, age: 18, approved_boolean: true)
 
 #Initialize all available stock codes
 @client = Iex.client
@@ -16,7 +16,7 @@ Trader.create(first_name: "Franco", last_name: "Rivera", email: "trader@trader.c
 
 @symbols.each do |x|
     if Stock.find_by(code: x.symbol) == nil
-        s = Stock.new(name: x.name, code: x.symbol, volume: 0)
+        s = Stock.new(name: x.name, code: x.symbol, volume: 0) #, price: @client.quote(x.symbol).latest_price)
         s.save!
     end
 end

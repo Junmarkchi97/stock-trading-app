@@ -1,10 +1,12 @@
 <ul>
     <% @owned_stocks.each do |stock|%>
         <li>
-            <p><%= stock[:trader_id]%></p>
-            <p><%= stock[:name]%></p>
-            <p><%= stock[:code]%></p>
-            <p><%= stock[:volume]%></p>
+            <p>Trader ID: <%= stock[:trader_id]%></p>
+            <p>Stock Name: <%= stock[:name]%></p>
+            <p>Stock Code: <%= stock[:code]%></p>
+            <p>Stock Volume: <%= stock[:volume]%></p>
+            <p>Stock Price: <%= stock[:price]%></p>
+            <p>Stock Value: <%= stock[:value]%></p>
         </li>
     <%end%>
 </ul>
