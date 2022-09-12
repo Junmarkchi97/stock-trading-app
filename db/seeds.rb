@@ -16,7 +16,7 @@ Trader.create(first_name: "Franco", last_name: "Rivera", email: "trader@trader.c
 
 @symbols.each do |x|
     if Stock.find_by(code: x.symbol) == nil
-        s = Stock.new(name: x.name, code: x.symbol, volume: 0) #, price: @client.quote(x.symbol).latest_price)
+        s = Stock.new(name: x.name, code: x.symbol, volume: 0 , price: @client.quote(x.symbol).latest_price)
         s.save!
     end
 end
