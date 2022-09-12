@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, value: @price %>
   </div>
 
   <div>
@@ -28,7 +28,7 @@
 
   <div>
     <%= form.label :stock_id, style: "display: block" %>
-    <%= form.number_field :stock_id %>
+    <%= form.number_field :stock_id, value: @stock.id %>
   </div>
 
   <div>
