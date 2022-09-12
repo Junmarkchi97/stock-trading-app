@@ -15,12 +15,14 @@ class DashboardController < ApplicationController
     # @company_stock = @client.quote(@stock.code)
     @companies = []
 
+
     # @stocks.split(1,5).each do |stock|
       # if stock.code != nil
         # stock.each do |x|
         #   @companies.push(@client.quote(x.code).latest_price)
         # end
       # end
+
     # end
 
   end
