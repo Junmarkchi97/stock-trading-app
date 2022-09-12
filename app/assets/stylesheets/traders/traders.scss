@@ -1,15 +1,10 @@
 @import "nav";
 
-.stocks {
+.traders {
   display: grid;
   width: 100%;
   margin: 0 auto;
   gap: 1.8rem;
   grid-template-columns: 14rem auto 23rem;
   height: 100vh;
-
-  .stocks-details {
-    height: 30rem;
-    overflow-y: scroll;
-  }
 }

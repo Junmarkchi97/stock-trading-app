@@ -1,4 +1,4 @@
-<div class="dashboard-nav">
+<div class="traders-nav">
   <div class="top">
     <%= link_to image_tag("/logo3.png"), homepage_path, class:"image" %>
     <div>
@@ -7,7 +7,7 @@
   </div>
   
   <div class="sidebar">
-    <a href="/" class="active">
+    <a href="/" >
       <span class="material-symbols-sharp">dashboard</span> 
       <h3>Dashboard</h3>
     </a>
@@ -19,7 +19,7 @@
       <span class="material-symbols-sharp">point_of_sale</span>
       <h3>Transactions</h3>
     </a>
-    <a href="<% edit_trader_registration_path %>">
+    <a href="/traders/edit"  class="active">
       <span class="material-symbols-sharp">settings</span>
       <h3>Settings</h3>
     </a>

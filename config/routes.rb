@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'buy', to: 'transaction#new'
   get 'search', to: 'search#index' 
   get 'portfolio', to: 'dashboard#portfolio'
+  # get 'settings' => 'devise/registrations#edit', as: :settings
  
 # <<<<<<< HEAD
 #   get 'portfolio', to: 'pages#portfolio'
@@ -34,10 +35,7 @@ Rails.application.routes.draw do
     # resources :transactions
   end
   devise_for :traders
-  resources :traders 
+  resources :traders  
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

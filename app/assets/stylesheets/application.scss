@@ -9,6 +9,7 @@
 @import "spinner/spinner";
 @import "stocks/stocks";
 @import "transactions/transactions";
+@import "traders/traders";
 
 html:focus-within {
   scroll-behavior: smooth;
@@ -35,7 +36,7 @@ body {
   text-rendering: optimizeSpeed;
   // font-size: 0.88rem;
   background: $color-backgorund;
-  user-select: none;
+  // user-select: none;
 }
 
 a {
@@ -109,7 +110,7 @@ b {
 
 .overflow {
   overflow-y: scroll;
-  height: 40rem;
+  height: 30rem;
 }
 
 .error {

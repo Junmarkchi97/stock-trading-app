@@ -1,13 +1,28 @@
 class DashboardController < ApplicationController
   before_action :set_client
+
   def index
-    
+    @stocks = Stock.all
+    @transactions = Transaction.all
     @microsoft = @client.quote('MSFT').latest_price
-    
+    # @logo = @client.logo('MSFT')
     @top_ten = @client.stock_market_list(:mostactive)
-    
     @symbols = @client.ref_data_symbols()
 
+    # @code = params[:code]
+    # @stock = Stock.find(params[:id])
+
+    # @company_stock = @client.quote(@stock.code)
+    @companies = []
+    @company_price = []
+
+    # @stocks.each do |stock|
+    #   if stock.code != nil
+    #     @companies.push(@client.quote(stock.code).latest_price)
+    #   end
+    # end
+
+    
   end
 
   def portfolio 
@@ -26,7 +41,9 @@ class DashboardController < ApplicationController
   end
 
   private
+
   def set_client
     @client = Iex.client
+    # @stock = Stock.find(params[:id])
   end
 end

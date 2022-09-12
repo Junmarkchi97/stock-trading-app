@@ -2,37 +2,83 @@
   <div class="dashboard">
     <%= render 'dashboard/nav' %>
     <div class="dash-home">
-      <p> Hello <%= current_trader.first_name%> <%= current_trader.last_name%>!</p>
-      <p>You are logged in.</p>
-      <% if !current_trader.admin %>
-          <p>You are a trader.</p>
-      <% else %>
-          <p><strong>You are an admin.</strong></p>
-          <p>There are <%= Trader.count %> in the system.</p>
-          <p><%= link_to "All Users", traders_path %></p>
-      <%end%>
-
+      <div>
+        <h1 class="dash-welcome"> Welcome, <%= current_trader.first_name%> <%= current_trader.last_name%>!</h1>
+          <div class="dash-balance">
+            <div class="cash"><%= number_to_currency(current_trader.cash) %></div>
+          <h3>Available Balance</h3>
+        </div>
+      </div>
       
-      <ul class="overflow">
-        <% @top_ten.each do |company| %>
-          <div class="company-details">
-            <div class="company-name">
-              <span><%= company.company_name %></span>
-              <strong><%= company.symbol %></strong>
+      <div class="trending-stocks">
+        <h2>Trending Stocks</h2>
+        <ul class="stocks">
+          <% @top_ten.each do |company| %>
+            <div class="company-details">
+              <div class="company-name">
+                <span><%= company.company_name %></span>
+                <strong><%= company.symbol %></strong>
+              </div>
+              <div class="company-price">
+                <strong>$<%= company.latest_price %></strong>
+                <% if company.change > 0 %>
+                  <strong class="green"><i class="fa-solid fa-arrow-trend-up"></i> <%= company.change %>%</strong>
+                <% else %>
+                  <strong class="red"><i class="fa-solid fa-arrow-trend-down"></i> <%= company.change %>%</strong>
+                <% end %>
+              </div>
             </div>
-            <div class="company-price">
-              <strong>$<%= company.latest_price %></strong>
-              <% if company.change > 0 %>
-                <strong class="green"><i class="fa-solid fa-arrow-trend-up"></i> <%= company.change %>%</strong>
-              <% else %>
-                <strong class="red"><i class="fa-solid fa-arrow-trend-down"></i> <%= company.change %>%</strong>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
+      </div>
 
-      <%# <%= link_to "Search", search_path %>
+      <div class="all-stocks">
+        <h2>All Stocks</h2>
+        <div class="stocks-description">
+            <div >Name</div>
+            <div>Price</div>
+            <div>Change</div>
+        </div>
+  
+        <div class="stocks-wrapper">
+          <% @stocks.each do |stock| %>
+            <% if stock.name != nil %>
+              <div class="stock">
+                  <div><%= stock.name %></div>
+                  <div class="stock-price">$404</div>
+                  <div class="stock-percent">69%</div>
+                  <div class="transac">
+                    <button class="buy">Buy</button>
+                    <button class="sell">Sell</button>
+                  </div>
+              </div>
+            <% end %> 
+          <% end %> 
+        </div>  
+      </div>
+    </div>
+    <div class="dash-right">
+      <h2>Transactions</h2>
+      
+
+      <div id="transactions" class="transaction">
+        <% @transactions.each do |transaction| %>
+          <%= render transaction %>
+          <p>
+            <%= link_to "Show this transaction", transaction %>
+          </p>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
+
+<%# <% if !current_trader.admin %>
+ <%# <p>You are a trader.</p>
+<%#<% else %>
+ <%#   <p><strong>You are an admin.</strong></p>
+ <%#   <p>There are <%= Trader.count %> <%#in the system.</p>
+  <%#  <p><%= link_to "All Users", traders_path %><%#</p>
+<%# <%end %>
+
+      <%# <%= link_to "Search", search_path %>

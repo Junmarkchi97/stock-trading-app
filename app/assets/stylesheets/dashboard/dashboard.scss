@@ -1,102 +1,293 @@
 @import "navigation";
 
 .dashboard {
-  // display: flex;
-  // flex-direction: row;
-  // height: 100vh;
   display: grid;
   width: 100%;
   margin: 0 auto;
   gap: 1.8rem;
-  grid-template-columns: 14rem auto 23rem;
+  grid-template-columns: 14vw auto 30vw;
   height: 100vh;
 
-  // .dash-home {
-  //   display: flex;
-  // }
+  .dash-home {
+    display: grid;
+    grid-template-rows: 20vh 30vh 50vh;
 
-  // .nav-logo {
-  //   display: flex;
-  //   align-items: center;
-  //   flex-direction: column;
+    .dash-welcome {
+      margin: 1rem 0rem;
+      color: $color-primary-dark;
+    }
 
-  //   .option {
-  //     transition: 0.2s;
-  //     cursor: pointer;
-  //     padding: 1rem;
+    .dash-balance {
+      border: none;
+      box-shadow: $box-shadow;
+      padding: 1.4rem 1rem;
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 300ms ease;
+      gap: 1rem;
 
-  //     .stocks {
-  //       padding: auto;
-  //     }
+      .cash {
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
 
-  //     &:hover {
-  //       background-color: rgb(235, 235, 235);
-  //     }
-  //   }
+      h3 {
+        color: $color-primary;
+      }
 
-  //   .logo {
-  //     height: auto;
-  //     width: 10rem;
-  //     padding: 2rem;
-  //   }
-  // }
+      &:hover {
+        box-shadow: 0 0 5px $color-primary-dark;
+      }
+    }
 
-  // .nav-logout {
-  //   margin: 1rem;
+    .trending-stocks {
+      display: grid;
+      margin: 1rem 0rem;
+      width: 100%;
+      height: auto;
+      border: none;
+      padding: 1.4rem 1rem;
+      box-shadow: $box-shadow;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: 300ms;
 
-  //   .logout {
-  //     text-decoration: none;
-  //     color: black;
-  //   }
-  // }
+      &:hover {
+        box-shadow: 0 0 5px $color-primary-dark;
+      }
 
-  .company-details {
-    padding: 1rem;
-    margin: 0.5rem 2rem;
-    width: auto;
-    height: auto;
-    min-width: 10rem;
-    max-width: 30rem;
-    border-radius: 10px;
-    box-shadow: 0px 0px 3px 0px rgb(175, 174, 174);
+      h2 {
+        color: $color-primary-dark;
+      }
+
+      .stocks {
+        display: flex;
+        width: auto;
+        height: auto;
+        overflow-x: scroll;
+        margin: 0 0 1rem 0;
+
+        &::-webkit-scrollbar {
+          width: 8px;
+          height: 7px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: $color-info-light;
+          border-radius: 10px;
+        }
+
+        .company-details {
+          padding: 1rem;
+          margin: 1rem 0.3rem;
+          min-width: 23rem;
+          width: auto;
+          height: auto;
+          border-radius: 10px;
+          box-shadow: 0px 0px 3px 0px rgb(175, 174, 174);
+          display: flex;
+          justify-content: space-between;
+          cursor: pointer;
+          transition: 0.2s ease;
+
+          &:hover {
+            background-color: rgb(221, 221, 221);
+          }
+
+          .green {
+            color: rgba(0, 128, 0, 0.8);
+          }
+
+          .red {
+            color: rgba(255, 0, 0, 0.8);
+          }
+
+          .company-name {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+
+            span {
+              font-weight: 600;
+              color: rgb(65, 65, 65);
+            }
+
+            strong {
+              color: rgb(160, 160, 160);
+            }
+          }
+
+          .company-price {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: flex-end;
+          }
+        }
+      }
+    }
+  }
+
+  .all-stocks {
     display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    transition: 0.2s;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    padding: 1rem;
+    border: none;
+    margin: 1rem 0rem 2rem 0rem;
+    transition: 250ms ease;
+    flex-direction: column;
+    height: auto;
+
+    .stocks-description {
+      display: grid;
+      grid-template-columns: 3fr 1.5fr 1.9fr;
+      padding: 0 1rem 1rem 1rem;
+      color: $color-primary;
+    }
+
+    .stocks-wrapper {
+      height: 80%;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+        height: 7px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $color-info-light;
+        border-radius: 10px;
+      }
+
+      .stock {
+        padding: 0.2rem 1rem;
+        // cursor: pointer;
+        transition: 300ms ease;
+        display: grid;
+        grid-template-columns: 3fr 2fr 2fr 1fr;
+
+        &:hover .transac {
+          opacity: 1;
+          user-select: auto;
+          transition: all 300ms;
+        }
+
+        .transac {
+          opacity: 0;
+          user-select: none;
+          transition: all 300ms;
+
+          .buy {
+            padding: 0.2rem 0.7rem;
+            border-radius: 5px;
+            color: white;
+            align-items: center;
+            background-color: $color-primary;
+            cursor: pointer;
+            transition: all 300ms;
+
+            &:hover {
+              background-color: $color-primary-dark;
+            }
+
+            &:active {
+              background-color: red;
+            }
+          }
+
+          .sell {
+            padding: 0.2rem 0.7rem;
+            border-radius: 5px;
+            color: white;
+            align-items: center;
+            background-color: $color-danger;
+            cursor: pointer;
+            transition: all 300ms;
+
+            &:hover {
+              background-color: #da626c;
+            }
+
+            &:active {
+              background-color: red;
+            }
+          }
+        }
+
+        .stock-price,
+        .stock-percent {
+          display: flex;
+
+          justify-content: center;
+        }
+
+        &:hover {
+          background-color: $color-info-light;
+        }
+      }
+    }
+
+    h2 {
+      color: $color-primary;
+      margin: 0 0 0.5rem 0;
+    }
 
     &:hover {
-      background-color: rgb(221, 221, 221);
+      box-shadow: 0 0 5px $color-primary-dark;
     }
 
-    .green {
-      color: rgba(0, 128, 0, 0.8);
-    }
-
-    .red {
-      color: rgba(255, 0, 0, 0.8);
-    }
-
-    .company-name {
+    .stocks {
+      overflow-y: scroll;
+      width: auto;
+      height: 15rem;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
+    }
+  }
 
-      span {
-        font-weight: 600;
-        color: rgb(65, 65, 65);
+  .dash-right {
+    display: flex;
+    // grid-template-rows: 100vh;
+    box-shadow: $box-shadow;
+    flex-direction: column;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    margin: 4.7rem 1rem 2rem 0rem;
+    transition: 250ms ease;
+    cursor: pointer;
+    height: 87vh;
+
+    .transaction {
+      height: auto;
+      overflow-y: scroll;
+      // display: flex;
+      // flex-direction: column;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+        height: 7px;
       }
 
-      strong {
-        color: rgb(160, 160, 160);
+      &::-webkit-scrollbar-thumb {
+        background: $color-info-light;
+        border-radius: 10px;
       }
     }
 
-    .company-price {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: flex-end;
+    h2 {
+      color: $color-primary;
+      margin: 1rem 0;
+    }
+
+    &:hover {
+      box-shadow: 0 0 5px $color-primary-dark;
     }
   }
 }

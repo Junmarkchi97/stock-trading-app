@@ -10,13 +10,16 @@
           <%= f.submit "Search!" %>
       <% end %>
       <br />
-      <div id="stocks">
+      <div id="stocks" class="stocks-details">
         <% @stocks.each do |stock| %>
-          <%= stock.code %>
-          <%= stock.name%>
-          <p>
-            <%= link_to "Show this stock", stock %>
-          </p>
+          <% if stock.name != nil %>
+            <%= stock.id %>
+            <%= stock.code %>
+            <%= stock.name %>
+            <p>
+              <%= link_to "Show this stock", stock %>
+            </p>
+          <% end %>
         <% end %>
       </div>
     <%else%>
