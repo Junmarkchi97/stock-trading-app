@@ -1,11 +1,15 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ show edit update destroy ]
-  # before_action :get_stock
+  # before_action :get_stock#, except: %i[create]
   # , except: [:index, :show]
 
   # GET /transactions or /transactions.json
   def index
-    @transactions = Transaction.all
+    if current_trader.admin
+      @transactions = Transaction.all
+    else
+      @transactions = Transaction.where(trader_id: current_trader.id)
+    end
     # @transactions = @stock.transactions
   end
 
@@ -17,6 +21,9 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+    # @query = Stock.ransack(params[:q])
+    # @stocks = @query.result(distinct: true)
+    @stock = Stock.find_by(id: @transaction.stock_id)
     # @transaction = @stock.transactions.build
 
     # @stock = Stock.find_by(id: '1')
@@ -29,14 +36,48 @@ class TransactionsController < ApplicationController
 
   # POST /transactions or /transactions.json
   def create
+    # debugger
     @transaction = Transaction.new(transaction_params)
-    # @transaction = @stock.transactions.build(transaction_params)
+
+    if Portfolio.exists?(trader_id: current_trader.id, stock_id: @transaction.stock_id)
+      @portfolio = Portfolio.find_by(trader_id: current_trader.id, stock_id: @transaction.stock_id)
+      if @transaction.transaction_type  
+        @portfolio.volume = @portfolio.volume + @transaction.volume
+        @portfolio.save
+      else
+        @portfolio.volume = @portfolio.volume - @transaction.volume
+        @portfolio.save
+      end
+    else  
+      Portfolio.create(trader_id: current_trader.id, stock_id: @transaction.stock_id, volume: @transaction.volume)
+    end
+
+    # @stock = Stock.find_by(id: @transaction.stock_id)
+    # # @stock.volume = @stock.volume + @transaction.volume
+    # # @stock.save
     
-    
+    # # @transaction = @stock.transactions.build(transaction_params)
+    # # debugger
+    # current_trader.stocks << @stock
+    # @current_stock = current_trader.stocks.find_by(id: @transaction.stock_id)
+    # @current_stock.volume = @current_stock.volume + @transaction.volume
+    # @current_stock.save
+    # # debugger
+    # if StocksTrader.exists?(stock_id: @transaction.stock_id, trader_id: current_trader.id ) #&& StocksTrader.has_key?(:volume) 
+    #   @stocks_trader = StocksTrader.find_by(stock_id: @transaction.stock_id, trader_id: current_trader.id)
+    #   @stocks_trader.set_volume(@stock)
+    #   # @sum = @stocks_trader.volume.to_i + @transaction.volume.to_i
+    #   # @stocks_trader.volume << @sum
+    #   # @stocks_trader.save
+    #   # debugger
+    # else
+    #   StocksTrader.create(stock_id: @transaction.stock_id, trader_id: @transaction.trader_id, volume: @transaction.volume)
+    #   # debugger
+    # end
 
     respond_to do |format|
       if @transaction.save
-
+        # debugger
         #buy and sell
         if @transaction.transaction_type == true
           current_trader.buy_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
@@ -85,13 +126,15 @@ class TransactionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
 
     # def get_stock
-    #   @stock = Stock.find(params[:stock_id])
+      # @stock = Stock.find(params[:stock_id])
     # end
+
+    def set_transaction
+      @transaction = Transaction.find(params[:id])
+      # @transaction = @stock.transactions.find(params[:id])
+    end
 
     # Only allow a list of trusted parameters through.
     def transaction_params

@@ -2,14 +2,7 @@
   <div class="dashboard">
     <%= render 'dashboard/nav' %>
     <div class="dash-home">
-      <div>
-        <h1 class="dash-welcome"> Welcome, <%= current_trader.first_name%> <%= current_trader.last_name%>!</h1>
-          <div class="dash-balance">
-            <div class="cash"><%= number_to_currency(current_trader.cash) %></div>
-          <h3>Available Balance</h3>
-        </div>
-      </div>
-      
+
       <div class="trending-stocks">
         <h2>Trending Stocks</h2>
         <ul class="stocks">
@@ -82,3 +75,6 @@
 <%# <%end %>
 
       <%# <%= link_to "Search", search_path %>
+
+
+   

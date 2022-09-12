@@ -1,11 +1,13 @@
 class Trader < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_and_belongs_to_many :stocks, join_table: 'stocks_traders'
+ 
   has_many :transactions
 
   # test for has_many_through
-  has_many :stocks, through: :transactions
+  # has_many :stocks, through: :transactions
+
+  has_and_belongs_to_many :stocks, join_table: 'stocks_traders'
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
