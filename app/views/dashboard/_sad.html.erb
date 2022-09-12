@@ -1,4 +1,4 @@
-<p> Hello <%= current_trader.first_name <%= current_trader.last_name %>!</p> %>
+ <p> Hello <%= current_trader.first_name%> <%= current_trader.last_name%>!</p>
       <p>You are logged in.</p>
       <% if !current_trader.admin %>
           <p>You are a trader.</p>
@@ -9,4 +9,4 @@
           <p>There are <%= Trader.count %> in the system.</p>
           <p><%= link_to "All Users", traders_path %></p>
           <p><%= link_to "Pending Traders", pending_path %></p>
-      <%end %>
+      <%end%>
