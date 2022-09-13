@@ -7,14 +7,16 @@
 
       <div id="transactions">
         <% @transactions.each do |transaction| %>
+          <p>Created At: <%= transaction.created_at %></p>
           <%= render transaction %>
           <p>
             <%= link_to "Show this transaction", transaction %>
           </p>
+          <br/>
         <% end %>
       </div>
 
-      <%= link_to "New transaction", new_transaction_path %>
+      <%# <%= link_to "New transaction", new_transaction_path %>
     </div>
 </div>
 

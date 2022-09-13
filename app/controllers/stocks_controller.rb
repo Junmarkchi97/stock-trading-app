@@ -13,6 +13,7 @@ class StocksController < ApplicationController
     @test2 = StocksTrader.find_by(trader_id: current_trader.id)
     @company_stock = @client.quote(@stock.code)
     # @stocks_trader = StocksTrader.new(trader_id: current_trader.id, stock_id: @test.id)
+    @portfolio = Portfolio.find_by(trader_id: current_trader.id, stock_id: @stock.id)
     @cash = current_trader.cash
     @stocks_trader = StocksTrader.find_or_create_by(trader_id: current_trader.id, stock_id: @test.id)
     
