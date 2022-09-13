@@ -42,12 +42,12 @@
         </div>
   
         <div class="stocks-wrapper">
-          <% @stocks.each do |stock| %>
-            <% if stock.name != nil %>
+          <% @companies.each do |company| %>
+            <% if company.company_name != nil %>
               <div class="stock">
-                  <div><%= stock.name %></div>
-                  <div class="stock-price">$404</div>
-                  <div class="stock-percent">69%</div>
+                  <div><%= company.company_name %></div>
+                  <div class="stock-price">$<%= company.latest_price %></div>
+                  <div class="<%= company.change && (company.change > 0) ? "success" : "danger" %> stock-percent"><%= company.change_percent_s ? company.change_percent_s : '0.00%' %></div>
                   <div class="transac">
                     <button class="buy">Buy</button>
                     <button class="sell">Sell</button>
@@ -59,9 +59,8 @@
       </div>
     </div>
     <div class="dash-right">
-      <h2>Transactions</h2>
-      <%# <%= @companies %>
-      <%= render 'sad' %>
+      <h2><%= !current_trader.admin ? 'Transactions' : 'Users transaction' %></h2>
+      <%= render 'sad' %>11
 
       <div id="transactions" class="transaction">
         <% @transactions.each do |transaction| %>

@@ -10,18 +10,18 @@ class DashboardController < ApplicationController
     @symbols = @client.ref_data_symbols()
 
     # @code = params[:code]
-    # @stock = Stock.find(params[:id])
+    # @stock = Stock.find(paramss[:id])
 
     # @company_stock = @client.quote(@stock.code)
     @companies = []
 
-    # @stocks.split(1,5).each do |stock|
-      # if stock.code != nil
-        # stock.each do |x|
-        #   @companies.push(@client.quote(x.code).latest_price)
-        # end
-      # end
-    # end
+    @stocks.each do |stock|
+      if stock.code != nil
+        if @companies.length < 30
+          @companies.push(@client.quote(stock.code))
+        end
+      end
+    end
 
   end
 
