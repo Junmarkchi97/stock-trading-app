@@ -21,9 +21,12 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+    @stock = Stock.find(params[:stock_id])
+    @client = Iex.client
+    @price = @client.quote(@stock.code).latest_price 
     # @query = Stock.ransack(params[:q])
     # @stocks = @query.result(distinct: true)
-    @stock = Stock.find_by(id: @transaction.stock_id)
+    # @stock = Stock.find_by(id: @transaction.stock_id)
     # @transaction = @stock.transactions.build
 
     # @stock = Stock.find_by(id: '1')
