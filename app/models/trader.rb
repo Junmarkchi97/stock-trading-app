@@ -22,6 +22,7 @@ class Trader < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :age, presence: true, numericality: { greater_than_or_equal_to: 18 }
+  # validates :cash, numericality: { greater_than_or_equal_to: 0 }
 
   def buy_stock(transaction, stock)
     self.cash = cash - (transaction.volume * transaction.price)

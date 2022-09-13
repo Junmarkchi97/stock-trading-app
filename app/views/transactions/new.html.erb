@@ -1,10 +1,12 @@
 <h1>New transaction</h1>
-
+<strong><%= @stock.name %><br/></strong>
+<strong><%= @stock.code %></strong>
+<br/><%= current_trader.cash%>
+<br/>
 <%= render "form", transaction: @transaction %>
-<%= @stock.name %>
-<br>
+
 
 
 <div>
-  <%= link_to "Back to transactions", transactions_path %>
+  <%= link_to "Back to Stock", stock_path(params[:stock_id]) %>
 </div>

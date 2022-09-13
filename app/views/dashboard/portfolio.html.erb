@@ -1,3 +1,4 @@
+<h1><%= current_trader.first_name %>'s Portfolio</h1>
 <ul>
     <% @owned_stocks.each do |stock|%>
         <li>
@@ -7,6 +8,8 @@
             <p>Stock Volume: <%= stock[:volume]%></p>
             <p>Stock Price: <%= stock[:price]%></p>
             <p>Stock Value: <%= stock[:value]%></p>
+            <br/>
         </li>
     <%end%>
 </ul>
+<%= link_to 'Back to Home', root_path %>

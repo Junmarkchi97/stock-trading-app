@@ -13,22 +13,22 @@
 
   <div>
     <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price, value: @price %>
+    <%= form.text_field :price, value: @price, :readonly => true %>
   </div>
 
   <div>
     <%= form.label :volume, style: "display: block" %>
-    <%= form.number_field :volume %>
+    <%= form.number_field :volume, value: 0 %>
   </div>
 
   <div>
     <%= form.label :trader_id, style: "display: block" %>
-    <%= form.number_field :trader_id, value: current_trader.id %>
+    <%= form.number_field :trader_id, value: current_trader.id, :readonly => true %>
   </div>
 
   <div>
     <%= form.label :stock_id, style: "display: block" %>
-    <%= form.number_field :stock_id, value: @stock.id %>
+    <%= form.number_field :stock_id, value: @stock.id, :readonly => true %>
   </div>
 
   <div>

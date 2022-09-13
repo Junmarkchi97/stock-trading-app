@@ -44,15 +44,15 @@ class TransactionsController < ApplicationController
 
     if Portfolio.exists?(trader_id: current_trader.id, stock_id: @transaction.stock_id)
       @portfolio = Portfolio.find_by(trader_id: current_trader.id, stock_id: @transaction.stock_id)
-      if @transaction.transaction_type  
-        @portfolio.volume = @portfolio.volume + @transaction.volume
-        @portfolio.save
-      else
-        @portfolio.volume = @portfolio.volume - @transaction.volume
-        @portfolio.save
-      end
+      # if @transaction.transaction_type  
+      #   @portfolio.volume = @portfolio.volume + @transaction.volume
+      #   @portfolio.save
+      # else
+      #   @portfolio.volume = @portfolio.volume - @transaction.volume
+      #   @portfolio.save
+      # end
     else  
-      Portfolio.create(trader_id: current_trader.id, stock_id: @transaction.stock_id, volume: @transaction.volume)
+      @portfolio = Portfolio.create(trader_id: current_trader.id, stock_id: @transaction.stock_id, volume: @transaction.volume)
     end
 
     # @stock = Stock.find_by(id: @transaction.stock_id)
@@ -83,16 +83,37 @@ class TransactionsController < ApplicationController
         # debugger
         #buy and sell
         if @transaction.transaction_type == true
-          current_trader.buy_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
+          if (@transaction.volume * @transaction.price.to_i) <= current_trader.cash
+
+            current_trader.buy_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
+            @portfolio.volume = @portfolio.volume + @transaction.volume
+            @portfolio.save
+
+            format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
+            format.json { render :show, status: :created, location: @transaction }
+
+          else
+            # format.html { redirect_to transaction_url(@transaction), notice: "Not enough cash." }
+            # format.html { render :new, status: :unprocessable_entity }
+            # format.json { render json: @transaction.errors, status: :unprocessable_entity }
+          end
         elsif @transaction.transaction_type == false
-          current_trader.sell_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
+          if @transaction.volume.to_i <= Portfolio.find_by(trader_id: current_trader.id, stock_id: @transaction.stock_id).volume.to_i 
+            
+            current_trader.sell_stock(@transaction, StocksTrader.find_by(stock_id: @transaction.stock_id))
+            format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
+            format.json { render :show, status: :created, location: @transaction }
+
+            @portfolio.volume = @portfolio.volume - @transaction.volume
+            @portfolio.save
           # puts @transaction_type
+          else
+          end
         end
 
         current_trader.save
 
-        format.html { redirect_to transaction_url(@transaction), notice: "Transaction was successfully created." }
-        format.json { render :show, status: :created, location: @transaction }
+        
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }

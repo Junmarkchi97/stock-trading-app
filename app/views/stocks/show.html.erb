@@ -11,11 +11,18 @@
 
 <br />
 <p><strong>Cash: </strong><%= @cash %></p>
-<p><strong>Owned: </strong><%= @stocks_trader.volume%></p>
+<p><strong>Owned: </strong>
+  <%if @portfolio != nil %>
+    <%= @portfolio.volume%>
+  <%else%>
+    0
+  <%end%>
+</p>
+
 <p><strong>Trader: </strong><%= current_trader.id%></p>
 <p><strong>Stock ID: </strong><%= @stock.id%></p>
-<%# <%= render "show_form", stocks_trader: @stocks_trader %> %>
-<%# <%= link_to "Buy or Sell", stock_buy_path(@stock) %> %>
+<%# <%= render "show_form", stocks_trader: @stocks_trader %>
+<%# <%= link_to "Buy or Sell", stock_buy_path(@stock) %> 
 <%= link_to "Buy or Sell", stock_buy_path(@stock) %>
 
 <div>
