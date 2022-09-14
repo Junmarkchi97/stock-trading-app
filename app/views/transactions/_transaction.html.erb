@@ -5,27 +5,33 @@
   </p>
 
   <p>
-    <strong>Volume:</strong>
+    <strong>Total Shares:</strong>
     <%= transaction.volume %>
   </p>
 
   <p>
     <strong>Trader ID:</strong>
     <%= transaction.trader_id %>
+    <%# <%= Trader.find(transaction.trader_id).first_name %>
+    <%# <%= Trader.find(transaction.trader_id).last_name %>  
   </p>
 
   <p>
-    <strong>Stock ID:</strong>
-    <%= transaction.stock_id %>
+    <strong>Company:</strong>
+    <% if Stock.find(transaction.stock_id).name == nil %>
+      <span>No Company Name</span>
+    <% else %>
+      <%= Stock.find(transaction.stock_id).name %>
+    <% end %>
   </p>
 
   <p>
     <strong>Type:</strong>
-    <%if transaction.transaction_type%>
-    Buy
-    <%else%>
-    Sell
-    <%end%>
+    <% if transaction.transaction_type %>
+      Buy
+    <% else %>
+      Sell
+    <% end %>
   </p>
 
 </div>

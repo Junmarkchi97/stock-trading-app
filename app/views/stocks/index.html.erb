@@ -1,8 +1,6 @@
 <div class="stocks">
   <%= render 'stocks/nav' %>
   <div>
-    <p style="color: green"><%= notice %></p>
-
     <h1>Stocks</h1>
     <% if current_trader.approved_boolean %>
       <%= search_form_for(@query, url: search_path, method: :get) do |f| %>

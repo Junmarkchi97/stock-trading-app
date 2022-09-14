@@ -3,7 +3,7 @@
     <%= render 'dashboard/nav' %>
     <div class="dash-home">
       <div>
-        <h1 class="dash-welcome"> Welcome, <%= current_trader.first_name%> <%= current_trader.last_name%>!</h1>
+          <h1 class="dash-welcome"> Welcome, <%= current_trader.first_name%> <%= current_trader.last_name%>!<span class="text-muted"><%= current_trader.admin ? "(Admin)" : "(Trader)" %></span></h1>
           <div class="dash-balance">
             <div class="cash"><%= number_to_currency(current_trader.cash) %></div>
           <h3>Available Balance</h3>
@@ -23,9 +23,9 @@
               <div class="company-price">
                 <strong>$<%= company.latest_price %></strong>
                 <% if company.change > 0 %>
-                  <strong class="green"><i class="fa-solid fa-arrow-trend-up"></i> <%= company.change %>%</strong>
+                  <strong class="green"><i class="fa-solid fa-arrow-trend-up"></i> <%= company.change_percent_s %></strong>
                 <% else %>
-                  <strong class="red"><i class="fa-solid fa-arrow-trend-down"></i> <%= company.change %>%</strong>
+                  <strong class="red"><i class="fa-solid fa-arrow-trend-down"></i> <%= company.change_percent_s %></strong>
                 <% end %>
               </div>
             </div>
@@ -60,14 +60,12 @@
     </div>
     <div class="dash-right">
       <h2><%= !current_trader.admin ? 'Transactions' : 'Users transaction' %></h2>
-      <%= render 'sad' %>11
 
       <div id="transactions" class="transaction">
         <% @transactions.each do |transaction| %>
+          <p>Created At: <%= transaction.created_at %></p>
           <%= render transaction %>
-          <p>
-            <%= link_to "Show this transaction", transaction %>
-          </p>
+          <br>
         <% end %>
       </div>
     </div>

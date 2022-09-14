@@ -3,7 +3,6 @@ class DashboardController < ApplicationController
 
   def index
     @stocks = Stock.all
-    @transactions = Transaction.all
     @microsoft = @client.quote('MSFT').latest_price
     # @logo = @client.logo('MSFT')
     @top_ten = @client.stock_market_list(:mostactive)
@@ -22,6 +21,13 @@ class DashboardController < ApplicationController
         end
       end
     end
+
+    if current_trader.admin
+      @transactions = Transaction.all
+    else
+      @transactions = Transaction.where(trader_id: current_trader.id)
+    end
+
   end
 
   def portfolio 
