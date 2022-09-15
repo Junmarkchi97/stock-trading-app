@@ -22,7 +22,7 @@
               </div>
               <div class="company-price">
                 <strong>$<%= company.latest_price %></strong>
-                <% if company.change > 0 %>
+                <% if company.change >= 0 %>
                   <strong class="green"><i class="fa-solid fa-arrow-trend-up"></i> <%= company.change_percent_s %></strong>
                 <% else %>
                   <strong class="red"><i class="fa-solid fa-arrow-trend-down"></i> <%= company.change_percent_s %></strong>
@@ -47,7 +47,7 @@
               <div class="stock">
                   <div><%= company.company_name %></div>
                   <div class="stock-price">$<%= company.latest_price %></div>
-                  <div class="<%= company.change && (company.change > 0) ? "success" : "danger" %> stock-percent"><%= company.change_percent_s ? company.change_percent_s : '0.00%' %></div>
+                  <div class="<%= company.change && (company.change >= 0) ? "success" : "danger" %> stock-percent"><%= company.change_percent_s ? company.change_percent_s : '0.00%' %></div>
                   <div class="transac">
                     <button class="buy">Buy</button>
                     <button class="sell">Sell</button>

@@ -1,11 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<div class="transactions">
+  <%= render 'transactions/nav' %>
+  <div>
+    <p style="color: green"><%= notice %></p>
 
-<%= render @transaction %>
-<%= current_trader.cash%>
+    <%= render @transaction %>
 
-<div>
-  <%# <%= link_to "Edit this transaction", edit_transaction_path(@transaction) %>
-  <%= link_to "To Transactions List", transactions_path %>
+    <div>
+    <%# <%= link_to "Edit this transaction", edit_transaction_path(@transaction) %>
+    <%= link_to "To Transactions List", transactions_path %>
 
-  <%# <%= button_to "Destroy this transaction", @transaction, method: :delete %>
+    <%# <%= button_to "Destroy this transaction", @transaction, method: :delete %>
+    </div>
+  </div>
 </div>

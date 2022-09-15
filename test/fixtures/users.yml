@@ -4,8 +4,9 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+# one: { created_at: 10/11/2022,
+# updated_at: 10/12/2022 }
 # column: value
 #
-two: {}
+# two: {}
 # column: value

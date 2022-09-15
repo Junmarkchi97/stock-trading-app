@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
 
     @stocks.each do |stock|
       if stock.code != nil
-        if @companies.length < 30
+        if @companies.length < 20
           @companies.push(@client.quote(stock.code))
         end
       end

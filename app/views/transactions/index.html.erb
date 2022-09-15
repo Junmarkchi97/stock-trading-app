@@ -3,15 +3,12 @@
     <div>
       <p style="color: green"><%= notice %></p>
 
-      <h1><%= current_trader.admin ? "Users Transaction" : "Transaction" %></h1>
+      <h1><%= current_trader.admin ? "Users Transaction" : "Transactions" %></h1>
 
       <div id="transactions">
         <% @transactions.each do |transaction| %>
           <p>Created At: <%= transaction.created_at %></p>
           <%= render transaction %>
-          <p>
-            <%= link_to "Show this transaction", transaction %>
-          </p>
           <br/>
         <% end %>
       </div>

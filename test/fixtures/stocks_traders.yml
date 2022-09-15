@@ -4,8 +4,8 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one: { trader_id: 2, stock_id: 2, volume: 1 }
 # column: value
 #
-two: {}
+two: { trader_id: 1, stock_id: 10000, volume: 1 }
 # column: value

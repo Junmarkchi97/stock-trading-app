@@ -1,12 +1,15 @@
-<h1>New transaction</h1>
-<strong><%= @stock.name %><br/></strong>
-<strong><%= @stock.code %></strong>
-<br/><%= current_trader.cash%>
-<br/>
-<%= render "form", transaction: @transaction %>
+<div class="stocks">
+  <%= render 'stocks/nav' %>
+  <div>
+    <h1>New transaction</h1>
+    <strong><%= @stock.name %><br/></strong>
+    <strong><%= @stock.code %></strong>
+    <br/><%= current_trader.cash%>
+    <br/>
+    <%= render "form", transaction: @transaction %>
 
-
-
-<div>
-  <%= link_to "Back to Stock", stock_path(params[:stock_id]) %>
+    <div>
+      <%= link_to "Back to Stock", stock_path(params[:stock_id]) %>
+    </div>
+  </div>
 </div>

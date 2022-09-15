@@ -1,32 +1,36 @@
 <%# <p style="color: green"><%= notice %>
+<div class="stocks">
+  <%= render 'stocks/nav' %>
+  <div>
+    <p><strong>Company ID:</strong> <%= @stock.id%></p>
+    <p><strong>Company Name:</strong> <%= @stock.name%></p>
+    <p><strong>Company Code:</strong> <%= @stock.code%></p>
+    <p><strong>Latest Price:</strong> <%= @company_stock.latest_price%></p>
+    <p><strong>Latest Time:</strong> <%= @company_stock.latest_time%></p>
+    <p><strong>Change:</strong> <%= @company_stock.change%></p>
 
-<p><strong>Company ID:</strong> <%= @stock.id%></p>
-<p><strong>Company Name:</strong> <%= @stock.name%></p>
-<p><strong>Company Code:</strong> <%= @stock.code%></p>
-<p><strong>Latest Price:</strong> <%= @company_stock.latest_price%></p>
-<p><strong>Latest Time:</strong> <%= @company_stock.latest_time%></p>
-<p><strong>Change:</strong> <%= @company_stock.change%></p>
+    <%= render @stock %>
 
-<%= render @stock %>
+    <br />
+    <p><strong>Cash: </strong><%= @cash %></p>
+    <p><strong>Owned: </strong>
+      <%if @portfolio != nil %>
+        <%= @portfolio.volume%>
+      <%else%>
+        0
+      <%end%>
+    </p>
 
-<br />
-<p><strong>Cash: </strong><%= @cash %></p>
-<p><strong>Owned: </strong>
-  <%if @portfolio != nil %>
-    <%= @portfolio.volume%>
-  <%else%>
-    0
-  <%end%>
-</p>
+    <p><strong>Trader: </strong><%= current_trader.id%></p>
+    <p><strong>Stock ID: </strong><%= @stock.id%></p>
+    <%# <%= render "show_form", stocks_trader: @stocks_trader %>
+    <%# <%= link_to "Buy or Sell", stock_buy_path(@stock) %> 
+    <%= link_to "Buy or Sell", stock_buy_path(@stock) %>
 
-<p><strong>Trader: </strong><%= current_trader.id%></p>
-<p><strong>Stock ID: </strong><%= @stock.id%></p>
-<%# <%= render "show_form", stocks_trader: @stocks_trader %>
-<%# <%= link_to "Buy or Sell", stock_buy_path(@stock) %> 
-<%= link_to "Buy or Sell", stock_buy_path(@stock) %>
-
-<div>
-  <%# <%= link_to "Edit this stock", edit_stock_path(@stock) %>
-  <%= link_to "To all stocks", stocks_path %> | 
-  <%= link_to "Back to Home", root_path %>
+    <div>
+      <%# <%= link_to "Edit this stock", edit_stock_path(@stock) %>
+      <%= link_to "To all stocks", stocks_path %> | 
+      <%= link_to "Back to Home", root_path %>
+    </div>
+  </div>
 </div>

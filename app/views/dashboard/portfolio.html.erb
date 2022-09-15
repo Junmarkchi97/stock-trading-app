@@ -45,7 +45,6 @@
         <ul>
             <% @owned_stocks.each do |stock|%>
                 <li>
-                    <p>Trader ID: <%= stock[:trader_id]%></p>
                     <p>Stock Name: <%= stock[:name]%>(<%= stock[:code]%>)</p>
                     <p>Total Shares: <%= stock[:volume]%></p>
                     <p>Stock Price: <%= stock[:price]%></p>
