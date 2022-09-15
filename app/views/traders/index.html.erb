@@ -1,30 +1,35 @@
-<% if current_trader.admin %>
-    <p>Hello <%= current_trader.first_name %> <%= current_trader.last_name %>! You are an admin.
+<div class="tradersall">
+  <%= render 'traders/nav' %>
+  <% if current_trader.admin %>
+    <div>
+        <p>Hello <%= current_trader.first_name %> <%= current_trader.last_name %>! You are an admin.
+        <p>There are <%= Trader.count %> in the system.</p>
 
-    <% @traders.each do |trader| %>
-    <ul>
-     <li>
-      <p>
-        <strong>ID:</strong>
-        <%= trader.id %>
-      </p>
+        <% @traders.each do |trader| %>
+          <ul>
+            <li>
+              <p>
+                <strong>ID:</strong>
+                <%= trader.id %>
+              </p>
 
-      <p>
-        <strong>Name:</strong>
-        <%= trader.first_name %> <%= trader.last_name %>
-      </p>
+              <p>
+                <strong>Name:</strong>
+                <%= trader.first_name %> <%= trader.last_name %>
+              </p>
+            </li>
+            <%= link_to "Show trader", trader %>
+          </ul>
+        <% end %>
 
-      </li>
-      <%= link_to "Show trader", trader %>
-    </ul>
-
-    <% end %>
-    <p><%= link_to "New trader", new_trader_session_path %></p>
-    <p><%= link_to "Back to Home", root_path %></p>
-    <%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
-
-<% else %>
-    <p>Hello <%= current_trader.first_name %> <%= current_trader.last_name %>! You are a basic trader. You cannot access this page.
-    <p><%= link_to "Back to Home", root_path %></p>
-    <%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
-<%end%>
+        <div>
+          <p><%= link_to "Pending Traders", pending_path %></p>
+          <p><%= link_to "New trader", new_trader_session_path %></p>
+        </div>
+    </div>
+  <% else %>
+      <p>Hello <%= current_trader.first_name %> <%= current_trader.last_name %>! You are a basic trader. You cannot access this page.
+      <p><%= link_to "Back to Home", root_path %></p>
+      <%= link_to "Sign Out", destroy_trader_session_path, 'data-turbo-method': :delete %>
+  <%end%>
+</div>

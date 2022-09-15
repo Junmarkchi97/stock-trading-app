@@ -1,15 +1,58 @@
-<h1><%= current_trader.first_name %>'s Portfolio</h1>
-<ul>
-    <% @owned_stocks.each do |stock|%>
-        <li>
-            <p>Trader ID: <%= stock[:trader_id]%></p>
-            <p>Stock Name: <%= stock[:name]%></p>
-            <p>Stock Code: <%= stock[:code]%></p>
-            <p>Stock Volume: <%= stock[:volume]%></p>
-            <p>Stock Price: <%= stock[:price]%></p>
-            <p>Stock Value: <%= stock[:value]%></p>
-            <br/>
-        </li>
-    <%end%>
-</ul>
-<%= link_to 'Back to Home', root_path %>
+<div class="portfolio">
+    <div class="portfolio-nav">
+        <div class="top">
+            <%= link_to image_tag("/logo3.png"), homepage_path, class:"image" %>
+            <div>
+            <span class="material-symbols-sharp close">close</span>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <a href="/" >
+                <span class="material-symbols-sharp">dashboard</span> 
+                <h3>Dashboard</h3>
+            </a>
+            <a href="/stocks">
+                <span class="material-symbols-sharp">shopping_cart</span>
+                <h3>Buy Stocks</h3>
+            </a>
+            <a href="/portfolio" class="active">
+                <span class="material-symbols-sharp">account_circle</span>
+                <h3>Portfolio</h3>
+            </a>
+            <a href="/transactions">
+                <span class="material-symbols-sharp">point_of_sale</span>
+                <h3>Transactions</h3>
+            </a>
+            <a href="<% edit_trader_registration_path %>">
+                <span class="material-symbols-sharp">settings</span>
+                <h3>Settings</h3>
+            </a>
+            <% if current_trader.admin %>
+            <a href="/traders">
+                <span class="material-symbols-sharp">group</span>
+                <h3>All Users</h3>
+            </a>
+            <% end %>
+            <a data-turbo-method="delete" class="logout" href="/traders/sign_out">
+                <span class="material-symbols-sharp">logout</span>
+                <h3>Log Out</h3>
+            </a>
+        </div>
+    </div>
+    <div>
+        <h1><%= current_trader.first_name %>'s Portfolio</h1>
+        <ul>
+            <% @owned_stocks.each do |stock|%>
+                <li>
+                    <p>Trader ID: <%= stock[:trader_id]%></p>
+                    <p>Stock Name: <%= stock[:name]%>(<%= stock[:code]%>)</p>
+                    <p>Total Shares: <%= stock[:volume]%></p>
+                    <p>Stock Price: <%= stock[:price]%></p>
+                    <p>Current Value: <%= stock[:value]%></p>
+                    <br/>
+                </li>
+            <%end%> 
+        </ul>
+    </div>
+</div>
